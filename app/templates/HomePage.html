@@ -1,10 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block title %}Home{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/HomePage.css') }}">
+{% endblock %}
+
+{% block content %}
+<main class="dash">
+  <!-- Top banner -->
+  <section class="dash-hero">
+    <h1 class="dash-title">Hey {{ user_name if user_name else "John" }}</h1>
+    <p class="dash-subtitle">Here is how you improving the environment</p>
+  </section>
+
+  <!-- Stat cards -->
+  <section class="stats">
+    <div class="stat-card">
+      <div class="stat-label">Total GHG emissions saved</div>
+      <div class="stat-row">
+        <div class="stat-value">{{ emissions_saved if emissions_saved else 68 }}</div>
+        <div class="stat-unit">CO2/kg</div>
+      </div>
+    </div>
+
+    <div class="stat-card stat-card--right">
+      <div class="stat-label">Leaderboard Ranking</div>
+      <div class="rank-row">
+        <div class="rank-value">{{ rank if rank else 120 }}</div>
+        <div class="rank-suffix">th</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meal cards grid -->
+  <section class="tiles">
+    <!-- Card 1 -->
+    <article class="tile">
+      <div class="tile-head">
+        <span class="tile-title">Pasta</span>
+        <span class="tile-underline"></span>
+      </div>
+      <div class="tile-media">
+        <!-- replace with your own image -->
+        <img
+          src="{{ url_for('static', filename='img/pasta.jpg') }}"
+          alt="Pasta"
+        >
+      </div>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="tile">
+      <div class="tile-head">
+        <span class="tile-title">Pizza</span>
+        <span class="tile-underline"></span>
+      </div>
+      <div class="tile-media">
+        <img
+          src="{{ url_for('static', filename='img/pizza.jpg') }}"
+          alt="Pizza"
+          onerror="this.style.display='none'; this.parentElement.classList.add('tile-media--empty');"
+        >
+      </div>
+    </article>
+
+    <!-- Card 3 (empty like screenshot) -->
+    <article class="tile">
+      <div class="tile-head">
+        <span class="tile-title">Lasagne</span>
+        <span class="tile-underline"></span>
+      </div>
+      <div class="tile-media tile-media--empty"></div>
+    </article>
+
+    <!-- Row 2 placeholders -->
+    <article class="tile tile--empty"></article>
+    <article class="tile tile--empty"></article>
+    <article class="tile tile--empty"></article>
+  </section>
+</main>
+{% endblock %}

@@ -34,6 +34,11 @@ Lets say someone makes a change and you want to look at the latest version of th
 
 Note: Always do this every time (only do the setup once) before you code anything just so you work on the latest folder
 
+## Running the Project
+
+1. In the \GroupProject directory run the following command
+   1. flask --app app:app --debug run
+
 
 ## Contributors
 

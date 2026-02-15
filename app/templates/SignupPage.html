@@ -1,10 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block title %}Sign Up{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/SignupPage.css') }}">
+{% endblock %}
+
+{% block content %}
+  <main class="auth-layout">
+    <section class="auth-left" aria-hidden="true"></section>
+
+    <section class="auth-right">
+      <div class="auth-card">
+        <h1 class="auth-title">Sign Up</h1>
+
+        <p class="auth-subtitle">
+          Already have an account?
+          <a class="auth-link" href="{{url_for('login')}}">Log in</a>
+        </p>
+
+        <form class="auth-form" method="POST" action="">
+          <div class="field">
+            <label for="full_name">Full Name</label>
+            <input id="full_name" name="full_name" type="text" placeholder="" required>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="" required>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="" required>
+          </div>
+
+          <button class="auth-btn" type="submit">Sign Up</button>
+        </form>
+      </div>
+    </section>
+  </main>
+{% endblock %}

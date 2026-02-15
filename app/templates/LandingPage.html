@@ -1,10 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block title %}
+    {{ title if title else "FoodApp" }}
+{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/LandingPage.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<header>
+    <nav>
+        <div class="logo">
+            <a href="">FoodApp</a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="{{url_for('home')}}">Meals</a></li>
+            <li><a href="">Leaderboard</a></li>
+            <li><a href="{{url_for('login')}}">Login</a></li>
+            <li>
+                <a href="{{url_for('signup')}}" class="signup-btn">
+                    Sign Up
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+
+        <div class="hero-content">
+            <h1>
+                {{ headline if headline else "Building a Sustainable Future" }}
+            </h1>
+
+            <p>
+                {{ description if description else
+                "Discover meals that are good for you and better for the planet. Join us in making sustainable food choices simple and rewarding." }}
+            </p>
+
+            {% if cta_url and cta_text %}
+                <a href="" class="cta-btn">
+                    {{ cta_text }}
+                </a>
+            {% endif %}
+        </div>
+
+        <div class="hero-image">
+            {% if hero_image %}
+                <img src="" alt="Hero Image">
+            {% else %}
+                <div class="image-placeholder"></div>
+            {% endif %}
+        </div>
+
+    </section>
+</main>
+
+{% endblock %}

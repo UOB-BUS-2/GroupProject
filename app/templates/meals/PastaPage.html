@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Meal Detail{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/meal/MealDetailPage.css') }}">
+{% endblock %}
+
+{% block content %}
+<main class="meal">
+
+  <!-- Top bar -->
+  <header class="meal-top">
+    <h1 class="meal-title">{{ meal_name if meal_name else "Pasta" }}</h1>
+
+    <div class="ghg-card">
+      <div class="ghg-label">GHG saved</div>
+      <div class="ghg-row">
+        <div class="ghg-value">{{ ghg_saved if ghg_saved else 68 }}</div>
+        <div class="ghg-unit">CO2/kg</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Options -->
+  <section class="meal-body">
+
+    <!-- Protein -->
+    <div class="group">
+      <h2 class="group-title">Protein</h2>
+
+      <div class="options">
+        <label class="opt">
+          <input type="radio" name="protein" value="chicken" checked>
+          <span class="box"></span>
+          <span class="text">Chicken</span>
+        </label>
+
+        <label class="opt">
+          <input type="radio" name="protein" value="ham">
+          <span class="box"></span>
+          <span class="text">Ham</span>
+        </label>
+
+        <label class="opt">
+          <input type="radio" name="protein" value="beef">
+          <span class="box"></span>
+          <span class="text">Beef</span>
+        </label>
+
+        <label class="opt">
+          <input type="radio" name="protein" value="tuna">
+          <span class="box"></span>
+          <span class="text">Tuna</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Pasta -->
+    <div class="group">
+      <h2 class="group-title">Pasta</h2>
+
+      <div class="options">
+        <label class="opt">
+          <input type="radio" name="pasta" value="penne">
+          <span class="box"></span>
+          <span class="text">Penne</span>
+        </label>
+
+        <label class="opt">
+          <input type="radio" name="pasta" value="rigatoni" checked>
+          <span class="box"></span>
+          <span class="text">Rigatoni</span>
+        </label>
+
+        <label class="opt">
+          <input type="radio" name="pasta" value="spaghetti">
+          <span class="box"></span>
+          <span class="text">Spaghetti</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Sauce -->
+    <div class="group group--spaced">
+      <h2 class="group-title">Sauce</h2>
+    </div>
+
+    <!-- Seasoning -->
+    <div class="group group--spaced">
+      <h2 class="group-title">Seasoning</h2>
+    </div>
+
+  </section>
+</main>
+{% endblock %}

@@ -1,0 +1,156 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root{
+  --lavender: #cfd5ff;
+  --text: #101010;
+  --muted: rgba(0,0,0,0.65);
+  --card: #ffffff;
+  --blue: #0b3dff;
+  --gray-box: #d8d8d8;
+}
+
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: #ffffff;
+}
+
+/* Page wrapper */
+.meal{
+  min-height: 100vh;
+}
+
+/* Top bar like screenshot */
+.meal-top{
+  background: var(--lavender);
+  padding: 22px 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.meal-title{
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
+}
+
+/* GHG card */
+.ghg-card{
+  background: var(--card);
+  border-radius: 10px;
+  padding: 12px 16px;
+  width: 170px;
+}
+
+.ghg-label{
+  font-size: 14px;
+  color: #1c1c1c;
+  margin-bottom: 6px;
+}
+
+.ghg-row{
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.ghg-value{
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.ghg-unit{
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Content area */
+.meal-body{
+  padding: 26px 26px 60px;
+  max-width: 860px;
+}
+
+/* Section headings (underlined) */
+.group{
+  margin: 18px 0 34px;
+}
+
+.group--spaced{
+  margin-top: 56px;
+}
+
+.group-title{
+  margin: 0 0 14px;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+/* Options row */
+.options{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 46px;
+  align-items: center;
+  padding-left: 6px;
+}
+
+/* Custom radio boxes */
+.opt{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 18px;
+}
+
+.opt input{
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.box{
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  background: var(--gray-box);
+  display: inline-block;
+}
+
+.opt input:checked + .box{
+  background: var(--blue);
+}
+
+.text{
+  color: #111;
+}
+
+/* Responsive */
+@media (max-width: 700px){
+  .meal-top{
+    flex-direction: column;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .options{
+    gap: 20px;
+  }
+
+  .opt{
+    font-size: 16px;
+  }
+}
