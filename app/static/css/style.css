@@ -1,44 +1,62 @@
-.analysis-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.gauge-wrapper {
-    margin: 30px auto;
-    max-width: 400px; /* Limits size on desktop so it doesn't look huge */
+:root {
+  /* Global palette */
+  --bg: #ffffff;
+  --text: #111111;
+  --muted: #7a7a7a;
+  --nav-muted: #9a9a9a;
+
+  /* Landing CTA pill */
+  --pill-bg: #cdd3ff;
+  --pill-text: #111111;
+
+  /* Layout */
+  --container: 1120px;
+  --radius-lg: 48px;
+
+  /* Placeholder (used by landing if you ever want it globally) */
+  --placeholder: #d9d9d9;
 }
 
-.responsive-gauge {
-    width: 100%;
-    height: auto;
-    display: block;
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
 }
 
-blockquote {
-    font-style: italic;
-    background: #f9f9f9;
-    padding: 15px;
-    border-left: 5px solid #2ecc71;
+::selection {
+  background: rgba(205, 211, 255, 0.6);
 }
 
 /* =========================
-   Navigation Bar
+   Navigation Bar (Landing style)
+   Works with your base.html markup:
+   <nav class="nav">
+     <div class="nav-inner">
+       <div class="nav-brand"><a>...</a></div>
+       <div class="nav-links">...</div> or <ul class="nav-links">...</ul>
+       <a class="nav-cta">...</a>
+     </div>
+   </nav>
    ========================= */
 
-.nav{
-  background: var(--card);
-  box-shadow: var(--shadow);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+.nav {
+  width: 100%;
+  background: transparent;
+  box-shadow: none;
+  position: static;
 }
 
-.nav-inner{
-  max-width: 1100px;
+.nav-inner {
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 14px 22px;
+  padding: 22px 24px;
 
   display: flex;
   align-items: center;
@@ -46,60 +64,85 @@ blockquote {
 }
 
 /* Brand */
-.nav-brand a{
-  font-weight: 800;
-  font-size: 18px;
+.nav-brand a {
   text-decoration: none;
   color: var(--text);
-}
-
-/* Links container */
-.nav-links{
-  display: flex;
-  align-items: center;
-  gap: 22px;
+  font-weight: 700;
+  font-size: 22px;
 }
 
 /* Links */
-.nav-links a{
+.nav-links {
+  list-style: none; /* safe for <ul>, harmless for <div> */
+  display: flex;
+  align-items: center;
+  gap: 42px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(0,0,0,0.75);
-  transition: color 120ms ease, transform 120ms ease;
+  color: var(--nav-muted);
+  font-weight: 500;
+  font-size: 16px;
 }
 
-.nav-links a:hover{
-  color: #000;
-  transform: translateY(-1px);
+.nav-links a:hover {
+  color: var(--text);
 }
 
-/* CTA button (Login / Logout) */
-.nav-cta{
-  padding: 8px 14px;
+/* CTA pill (Login / Logout / Signup etc.) */
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 18px;
   border-radius: 999px;
-  background: var(--lavender);
-  color: #111 !important;
-  font-weight: 700;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-  transition: transform 120ms ease, box-shadow 120ms ease;
+  background: var(--pill-bg);
+  color: var(--pill-text) !important;
+  font-weight: 600;
+  text-decoration: none;
 }
 
-.nav-cta:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 10px 18px rgba(0,0,0,0.12);
+.nav-cta:hover {
+  filter: brightness(0.97);
 }
 
-/* Mobile */
-@media (max-width: 900px){
-  .nav-inner{
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+/* Responsive */
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 22px;
   }
+}
 
-  .nav-links{
-    flex-wrap: wrap;
-    gap: 14px;
-  }
+/* =========================
+   Meal Impact Analysis page
+   (HomeRedirect.html)
+   ========================= */
+
+.analysis-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.gauge-wrapper {
+  margin: 30px auto;
+  max-width: 400px;
+}
+
+.responsive-gauge {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+blockquote {
+  font-style: italic;
+  background: #f9f9f9;
+  padding: 15px;
+  border-left: 5px solid #2ecc71;
 }

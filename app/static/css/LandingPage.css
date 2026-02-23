@@ -1,97 +1,6 @@
-/* ============ Base / Reset ============ */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-:root {
-  --bg: #ffffff;
-  --text: #111111;
-  --muted: #7a7a7a;
-  --nav-muted: #9a9a9a;
-
-  --pill-bg: #cdd3ff;     /* soft lavender like screenshot */
-  --pill-text: #111111;
-
-  --placeholder: #d9d9d9;
-
-  --container: 1120px;
-  --radius-lg: 48px;
-}
-
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-}
-
-/* Optional: nice selection */
-::selection {
-  background: rgba(205, 211, 255, 0.6);
-}
-
-/* ============ Layout Helpers ============ */
 header,
 main {
   width: 100%;
-}
-
-nav {
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 22px 24px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Logo */
-.logo a {
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 700;
-  font-size: 22px;
-}
-
-/* Nav links */
-.nav-links {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 42px;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: var(--nav-muted);
-  font-weight: 500;
-  font-size: 16px;
-}
-
-.nav-links a:hover {
-  color: var(--text);
-}
-
-/* Sign up pill */
-.signup-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 10px 18px;
-  border-radius: 999px;
-  background: var(--pill-bg);
-  color: var(--pill-text) !important; /* override muted link color */
-  font-weight: 600;
-}
-
-.signup-btn:hover {
-  filter: brightness(0.97);
 }
 
 /* ============ Hero ============ */
@@ -122,7 +31,7 @@ nav {
   line-height: 1.6;
 }
 
-/* CTA (only shows if you pass cta_url and cta_text) */
+/* CTA (optional) */
 .cta-btn {
   display: inline-flex;
   align-items: center;
@@ -164,10 +73,6 @@ nav {
 
 /* ============ Responsive ============ */
 @media (max-width: 900px) {
-  .nav-links {
-    gap: 22px;
-  }
-
   .hero {
     grid-template-columns: 1fr;
     gap: 32px;
