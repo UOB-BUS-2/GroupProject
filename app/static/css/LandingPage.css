@@ -90,4 +90,15 @@ main {
   .hero-image {
     justify-content: flex-start;
   }
+
+  .image-placeholder{
+  display: grid;
+  place-items: center;
+}
+
+.hero-icon{
+  width: 62%;
+  height: auto;
+  color: rgba(17, 17, 17, 0.72); /* uses currentColor in the SVG */
+}
 }

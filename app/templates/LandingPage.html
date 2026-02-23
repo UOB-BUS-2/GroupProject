@@ -53,7 +53,56 @@
             {% if hero_image %}
                 <img src="" alt="Hero Image">
             {% else %}
-                <div class="image-placeholder"></div>
+                <div class="image-placeholder" aria-hidden="true">
+  <svg class="hero-icon" viewBox="0 0 240 240" role="img" aria-label="Plate with footprint icon">
+
+    <!-- Plate -->
+    <circle cx="120" cy="120" r="82"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="10"
+            opacity="0.9"/>
+
+    <circle cx="120" cy="120" r="52"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="6"
+            opacity="0.25"/>
+
+    <!-- Proper footprint -->
+    <g fill="currentColor">
+
+      <!-- Sole -->
+      <path d="
+        M118 172
+        C104 168, 96 156, 94 142
+        C92 128, 96 114, 104 104
+        C112 94, 122 92, 130 96
+        C138 100, 142 112, 140 128
+        C138 146, 132 164, 118 172
+        Z"
+        opacity="0.95"/>
+
+      <!-- Arch cut (creates realistic inner curve) -->
+      <path d="
+        M112 140
+        C104 132, 106 120, 112 112
+        C108 118, 110 128, 116 136
+        Z"
+        fill="white"
+        opacity="0.35"/>
+
+      <!-- Toes (proper arc, decreasing size) -->
+      <circle cx="150" cy="82"  r="11"/>  <!-- big toe -->
+      <circle cx="134" cy="72"  r="8.5"/>
+      <circle cx="120" cy="68"  r="7.5"/>
+      <circle cx="106" cy="72"  r="6.5"/>
+      <circle cx="94"  cy="82"  r="5.5"/>
+
+    </g>
+
+  </svg>
+</div>
             {% endif %}
         </div>
 
