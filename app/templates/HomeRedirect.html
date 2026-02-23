@@ -1,26 +1,42 @@
 {% extends "base.html" %}
 
-{% block title %}Home Redirect{% endblock %}
+{% block title %}Meal Impact Analysis{% endblock %}
 
 {% block content %}
+<div class="analysis-container">
+    <header class="impact-header">
+        <h1>Your meal's impact is: <strong>{{ qualitative_impact | replace('_', ' ') | title }}</strong></h1>
+    </header>
 
-<h1>Your meal's impact is: {{ qualitative_impact }}</h1>
-<!-- Impact slider {{ qualitative_impact }} - very low | low | medium | high | very high -->
-{% if qualitative_impact == "very_high" %}
-<img src="{{ url_for('static', filename='images/very_high.png') }}" alt="Guage very high">
-{% elif qualitative_impact == "high" %}
-<img src="{{ url_for('static', filename='images/high.png') }}" alt="Guage high">
-{% elif qualitative_impact == "medium" %}
-<img src="{{ url_for('static', filename='images/medium.png') }}" alt="Guage medium">
-{% elif qualitative_impact == "low" %}
-<img src="{{ url_for('static', filename='images/low.png') }}" alt="Guage low">
-{% elif qualitative_impact == "very_low" %}
-<img src="{{ url_for('static', filename='images/very_low.png') }}" alt="Guage very low">
-{% endif %}
+    <div class="gauge-wrapper">
+        {# Map impacts to images #}
+        {% set impact_images = {
+            'very_high': 'very_high.png',
+            'high': 'high.png',
+            'medium': 'medium.png',
+            'low': 'low.png',
+            'very_low': 'very_low.png'
+        } %}
 
-<p>This meal contributed to {{ total_emissions }} of greenhouse gas emissions</p><br>
-<p>That is the equivalent to driving {{ car_miles }} in your car!</p><br>
-<p>Here is a direct action you can take to lower your food-related carbon footprint:</p><br>
-<p>{{ generic_tip }}</p>
+        {% if qualitative_impact in impact_images %}
+            <img src="{{ url_for('static', filename='images/' ~ impact_images[qualitative_impact]) }}"
+                 alt="Impact gauge showing {{ qualitative_impact }}"
+                 class="responsive-gauge">
+        {% else %}
+            <p>Impact data visualization unavailable.</p>
+        {% endif %}
+    </div>
 
+    <section class="impact-details">
+        <p>This meal contributed to <strong>{{ total_emissions }}</strong> of greenhouse gas emissions.</p>
+        <p>That is the equivalent of driving <strong>{{ car_miles }}</strong> in your car!</p>
+    </section>
+
+    <hr>
+
+    <section class="action-tip">
+        <h3>Direct Action You Can Take:</h3>
+        <blockquote>{{ generic_tip }}</blockquote>
+    </section>
+</div>
 {% endblock %}

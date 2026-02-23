@@ -1,8 +1,9 @@
 import os
 import random
 from app import app
-from flask import render_template, current_app
+from flask import render_template, current_app, redirect, url_for
 from app.classes import User, Meal
+from app.forms import LogMeal
 
 
 @app.route("/",methods=["GET","POST"])
@@ -22,11 +23,17 @@ def login():
 
 @app.route("/home",methods=["GET","POST"])
 def home():
-    return render_template("HomePage.html")
+    form = LogMeal()
+    if form.validate_on_submit():
+        logged_meal = Meal(form.carb_selected.data, form.protein_selected.data, form.veg_selected.data)
+
+        return redirect(url_for('home_redirect',logged_meal=logged_meal))
+
+    return render_template("HomePage.html", form = form)
 
 
-@app.route("/home_redirect/<meal_object>", methods=["GET","POST"])
-def home_redirect(meal_object):
+@app.route("/home_redirect/<logged_meal>", methods=["GET","POST"])
+def home_redirect(logged_meal):
     total_emissions = None
     qualitative_impact = "low"
     car_miles = None

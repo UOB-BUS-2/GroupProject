@@ -1,0 +1,24 @@
+.analysis-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.gauge-wrapper {
+    margin: 30px auto;
+    max-width: 400px; /* Limits size on desktop so it doesn't look huge */
+}
+
+.responsive-gauge {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+blockquote {
+    font-style: italic;
+    background: #f9f9f9;
+    padding: 15px;
+    border-left: 5px solid #2ecc71;
+}
