@@ -17,7 +17,7 @@ class LogMeal(FlaskForm):
                                          choices=[('beef', 'Beef'),('chicken', 'Chicken'),('eggs', 'Eggs'),('tofu', 'Tofu'), ('fish', 'Fish and seafood')])
     carb_selected = SelectField("What was your main carbohydrate", validators=[DataRequired()],
                                          choices=[('bread', 'Bread'),('rice', 'Rice'),('pasta', 'Pasta')])
-    veg_selected = SelectField("What was your main carbohydrate", validators=[DataRequired()],
+    veg_selected = SelectField("What was your main vegetable", validators=[DataRequired()],
                                          choices=[('potato', 'Potato'),('carrot', 'Carrot'),('broccoli', 'Broccoli'),('spinach', 'Spinach'), ('onion', 'Onion')])
     # Maybe added later
     # date_completed = DateField(
