@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Home Redirect{% endblock %}
+
+{% block content %}
+
+<h1>Your meal's impact is: {{ qualitative_impact }}</h1>
+<!-- Impact slider {{ qualitative_impact }} - very low | low | medium | high | very high -->
+{% if qualitative_impact == "very_high" %}
+<img src="{{ url_for('static', filename='images/very_high.png') }}" alt="Guage very high">
+{% elif qualitative_impact == "high" %}
+<img src="{{ url_for('static', filename='images/high.png') }}" alt="Guage high">
+{% elif qualitative_impact == "medium" %}
+<img src="{{ url_for('static', filename='images/medium.png') }}" alt="Guage medium">
+{% elif qualitative_impact == "low" %}
+<img src="{{ url_for('static', filename='images/low.png') }}" alt="Guage low">
+{% elif qualitative_impact == "very_low" %}
+<img src="{{ url_for('static', filename='images/very_low.png') }}" alt="Guage very low">
+{% endif %}
+
+<p>This meal contributed to {{ total_emissions }} of greenhouse gas emissions</p><br>
+<p>That is the equivalent to driving {{ car_miles }} in your car!</p><br>
+<p>Here is a direct action you can take to lower your food-related carbon footprint:</p><br>
+<p>{{ generic_tip }}</p>
+
+{% endblock %}
