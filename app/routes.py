@@ -48,3 +48,8 @@ def home_redirect(logged_meal):
                            qualitative_impact=qualitative_impact,
                            car_miles=car_miles,
                            generic_tip=generic_tip)
+
+@app.route("/leaderboard", methods = ['GET', 'POST'])
+def leaderboard():
+
+    return render_template('LeaderboardPage.html')
