@@ -25,4 +25,4 @@ class LogMeal(FlaskForm):
     #     format="%Y-%m-%d",
     #     default=date.today
     # )
-    submit = SubmitField("Submit Task")
+    submit = SubmitField("Submit Meal")

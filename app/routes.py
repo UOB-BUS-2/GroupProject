@@ -21,14 +21,14 @@ def login():
     return render_template("LoginPage.html")
 
 
-@app.route("/home",methods=["GET","POST"])
-def home():
+@app.route("/log_meal",methods=["GET","POST"])
+def log_meal():
     form = LogMeal()
     if form.validate_on_submit():
         logged_meal = Meal(form.carb_selected.data, form.protein_selected.data, form.veg_selected.data)
         return redirect(url_for('home_redirect', logged_meal=logged_meal))
 
-    return render_template("HomePage.html", form=form)
+    return render_template("log_meal.html", form=form)
 
 
 @app.route("/home_redirect/<logged_meal>", methods=["GET","POST"])
