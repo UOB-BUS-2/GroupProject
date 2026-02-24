@@ -1,7 +1,7 @@
 from random import choice
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, DateField
+from wtforms import StringField, SubmitField, DateField, FloatField
 from wtforms.fields.choices import SelectField, SelectMultipleField
 from wtforms.fields.simple import BooleanField, PasswordField
 from wtforms.validators import DataRequired, Length
@@ -26,3 +26,9 @@ class LogMeal(FlaskForm):
     #     default=date.today
     # )
     submit = SubmitField("Submit Meal")
+
+class LogFood(FlaskForm):
+    category = SelectField("Category", choices=[], validators=[DataRequired()])
+    food = SelectField("Food", choices=[], validators=[DataRequired()])
+    portions = FloatField("Number of portions", default=1, validators=[DataRequired()])
+    submit = SubmitField("Calculate")
