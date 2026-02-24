@@ -26,7 +26,3 @@ class LogMeal(FlaskForm):
     #     default=date.today
     # )
     submit = SubmitField("Submit Meal")
-
-
-class Test(FlaskForm):
-    pass
