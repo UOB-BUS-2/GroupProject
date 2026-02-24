@@ -2,7 +2,7 @@ import os
 import random
 from app import app
 from flask import render_template, current_app, redirect, url_for
-from app.classes import User, Meal
+from app.models import User, Meal
 from app.forms import LogMeal
 
 

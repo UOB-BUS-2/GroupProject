@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block title %}
-    {{ title if title else "FoodApp" }}
+{{ title if title else "FoodApp" }}
 {% endblock %}
 
 {% block styles %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/LandingPage.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/LandingPage.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -39,41 +39,42 @@
 
             <p>
                 {{ description if description else
-                "Discover meals that are good for you and better for the planet. Join us in making sustainable food choices simple and rewarding." }}
+                "Discover meals that are good for you and better for the planet. Join us in making sustainable food
+                choices simple and rewarding." }}
             </p>
 
             {% if cta_url and cta_text %}
-                <a href="" class="cta-btn">
-                    {{ cta_text }}
-                </a>
+            <a href="" class="cta-btn">
+                {{ cta_text }}
+            </a>
             {% endif %}
         </div>
 
         <div class="hero-image">
             {% if hero_image %}
-                <img src="" alt="Hero Image">
+            <img src="" alt="Hero Image">
             {% else %}
-                <div class="image-placeholder" aria-hidden="true">
-  <svg class="hero-icon" viewBox="0 0 240 240" role="img" aria-label="Plate with footprint icon">
+            <div class="image-placeholder" aria-hidden="true">
+                <svg class="hero-icon" viewBox="0 0 240 240" role="img" aria-label="Plate with footprint icon">
 
-    <!-- Plate -->
-    <circle cx="120" cy="120" r="82"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="10"
-            opacity="0.9"/>
+                    <!-- Plate -->
+                    <circle cx="120" cy="120" r="82"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="10"
+                            opacity="0.9"/>
 
-    <circle cx="120" cy="120" r="52"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="6"
-            opacity="0.25"/>
+                    <circle cx="120" cy="120" r="52"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="6"
+                            opacity="0.25"/>
 
-    <!-- Proper footprint -->
-    <g fill="currentColor">
+                    <!-- Proper footprint -->
+                    <g fill="currentColor">
 
-      <!-- Sole -->
-      <path d="
+                        <!-- Sole -->
+                        <path d="
         M118 172
         C104 168, 96 156, 94 142
         C92 128, 96 114, 104 104
@@ -81,28 +82,28 @@
         C138 100, 142 112, 140 128
         C138 146, 132 164, 118 172
         Z"
-        opacity="0.95"/>
+                              opacity="0.95"/>
 
-      <!-- Arch cut (creates realistic inner curve) -->
-      <path d="
+                        <!-- Arch cut (creates realistic inner curve) -->
+                        <path d="
         M112 140
         C104 132, 106 120, 112 112
         C108 118, 110 128, 116 136
         Z"
-        fill="white"
-        opacity="0.35"/>
+                              fill="white"
+                              opacity="0.35"/>
 
-      <!-- Toes (proper arc, decreasing size) -->
-      <circle cx="150" cy="82"  r="11"/>  <!-- big toe -->
-      <circle cx="134" cy="72"  r="8.5"/>
-      <circle cx="120" cy="68"  r="7.5"/>
-      <circle cx="106" cy="72"  r="6.5"/>
-      <circle cx="94"  cy="82"  r="5.5"/>
+                        <!-- Toes (proper arc, decreasing size) -->
+                        <circle cx="150" cy="82" r="11"/>  <!-- big toe -->
+                        <circle cx="134" cy="72" r="8.5"/>
+                        <circle cx="120" cy="68" r="7.5"/>
+                        <circle cx="106" cy="72" r="6.5"/>
+                        <circle cx="94" cy="82" r="5.5"/>
 
-    </g>
+                    </g>
 
-  </svg>
-</div>
+                </svg>
+            </div>
             {% endif %}
         </div>
 
