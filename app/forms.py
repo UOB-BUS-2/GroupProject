@@ -1,13 +1,6 @@
-from random import choice
-
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, DateField, FloatField
-from wtforms.fields.choices import SelectField, SelectMultipleField
-from wtforms.fields.simple import BooleanField, PasswordField
+from wtforms import StringField, SubmitField, DateField, FloatField, SelectField
 from wtforms.validators import DataRequired, Length
-from datetime import date
-
-from wtforms.widgets.core import CheckboxInput
 
 
 class LogMeal(FlaskForm):
@@ -18,7 +11,7 @@ class LogMeal(FlaskForm):
     carb_selected = SelectField("What was your main carbohydrate", validators=[DataRequired()],default = None,
                                          choices=[(None, '--- Select Carbohydrate ---'), ('bread', 'Bread'),('rice', 'Rice'),('pasta', 'Pasta')])
     veg_selected = SelectField("What was your main vegetable", validators=[DataRequired()], default = None,
-                                         choices=[(None, '--- Select Vegetable ---'), ('potato', 'Potato'),('carrot', 'Carrot'),('broccoli', 'Broccoli'),('spinach', 'Spinach'), ('onion', 'Onion')])
+                                         choices=[(None, '--- Select Vegetable ---'), ('potato', 'Potato'),('carrot', 'Carrot'),('broccoli', 'Broccoli'),('tomato', 'Tomato'), ('onion', 'Onion')])
     # Maybe added later
     # date_completed = DateField(
     #     "When did you have this?",
@@ -26,9 +19,3 @@ class LogMeal(FlaskForm):
     #     default=date.today
     # )
     submit = SubmitField("Submit Meal")
-
-class LogFood(FlaskForm):
-    category = SelectField("Category", choices=[], validators=[DataRequired()])
-    food = SelectField("Food", choices=[], validators=[DataRequired()])
-    portions = FloatField("Number of portions", default=1, validators=[DataRequired()])
-    submit = SubmitField("Calculate")

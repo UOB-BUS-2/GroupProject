@@ -1,0 +1,46 @@
+Food,Category,kg_CO2e_per_kg,Portion Description,Portion Size (g),CO2 per Portion (kg)
+beef,Meat,60,1 serving (steak),150,9
+Lamb & Mutton,Meat,24,1 serving,100,2.4
+Pork,Meat,7,1 chop,140,0.98
+chicken,Meat,6,1 breast,120,0.72
+Turkey,Meat,6.5,1 serving,100,0.65
+fish,Seafood,5,1 fillet,140,0.7
+Wild Fish,Seafood,3,1 fillet,140,0.42
+Shrimp (farmed),Seafood,12,1 serving,100,1.2
+eggs,Animal Products,4.5,1 large egg,60,0.27
+Milk (cow),Dairy,3.2,1 glass,244,0.7808
+Cheese,Dairy,13.5,1 slice,25,0.3375
+Butter,Dairy,23,1 tbsp,14,0.322
+Yogurt,Dairy,2.2,1 cup,245,0.539
+tofu,Plant Protein,3.2,1 serving,100,0.32
+Tempeh,Plant Protein,2.8,1 serving,100,0.28
+Lentils,Plant Protein,0.9,1/2 cup cooked,100,0.09
+Chickpeas,Plant Protein,1,1 serving,100,0.1
+Beans (dry),Plant Protein,0.8,1/2 cup cooked,90,0.072
+rice,Grains,2,1 cup cooked,158,0.316
+Wheat,Grains,1.6,1 serving,100,0.16
+Oats,Grains,1.5,1 serving,100,0.15
+bread,Grains,1.4,1 slice,30,0.042
+pasta,Grains,1.8,1 cup cooked,140,0.252
+potato,Vegetables,0.3,1 medium,173,0.0519
+tomato,Vegetables,1.4,1 medium,123,0.1722
+carrot,Vegetables,0.4,1 serving,100,0.04
+broccoli,Vegetables,0.5,1 serving,100,0.05
+onion,Vegetables,0.5,1 serving,100,0.05
+Apples,Fruit,0.4,1 medium,182,0.0728
+Bananas,Fruit,0.8,1 medium,118,0.0944
+Oranges,Fruit,0.3,1 serving,100,0.03
+Berries,Fruit,1.5,1 serving,100,0.15
+Avocados,Fruit,1.6,1 serving,100,0.16
+Nuts (mixed),Nuts & Seeds,0.7,1 handful,28,0.0196
+Almonds,Nuts & Seeds,0.6,1 serving,100,0.06
+Peanuts,Nuts & Seeds,0.4,1 handful,28,0.0112
+Sunflower Seeds,Nuts & Seeds,0.5,1 serving,100,0.05
+Olive Oil,Oils & Fats,6,1 serving,100,0.6
+Vegetable Oil,Oils & Fats,3.5,1 serving,100,0.35
+Palm Oil,Oils & Fats,8,1 serving,100,0.8
+Chocolate (dark),Sweets,19,1 serving,100,1.9
+Coffee (beans),Beverages,17,1/2 cup cooked,90,1.53
+Tea (dried),Beverages,6,1 serving,100,0.6
+Beer,Beverages,1,1 serving,100,0.1
+Wine,Beverages,1.6,1 serving,100,0.16
