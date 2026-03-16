@@ -51,3 +51,4 @@ class Meal(db.Model):
 
     def __repr__(self):
         return f"{self.id}. {self.carb}, {self.protein}, {self.veg} - {self.total_emissions} - {self.date_added}"
+
