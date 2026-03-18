@@ -5,11 +5,34 @@ import sqlalchemy as sa
 from flask import current_app
 import csv
 import os
+from flask_login import UserMixin
+from typing import Optional
+from werkzeug.security import generate_password_hash, check_password_hash
 
-class User:
-    def __init__(self, username):
-        self.username = username
-        self.logged_meals = []
+
+
+class User(db.Model,UserMixin):
+    __tablename__ = 'users'
+    id: so.Mapped[int] = so.mapped_column(primary_key=True)
+    username: so.Mapped[str] = so.mapped_column(sa.String(63), index=True,
+                                                unique=True)
+    # email: so.Mapped[str] = so.mapped_column(sa.String(119), index=True,
+    #                                          unique=True)
+    password_hash: so.Mapped[Optional[str]] = so.mapped_column(sa.String(255))
+
+    weekly_score: so.Mapped[int] = so.mapped_column(sa.Integer, index=True, default=0)
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+    def __repr__(self):
+        return '<User {}>'.format(self.username)
+
+
+
 
 class Meal(db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)

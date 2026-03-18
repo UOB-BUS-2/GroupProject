@@ -335,3 +335,37 @@ body{
     padding: 16px 18px;
   }
 }
+
+/* Leaderboard container */
+.leaderboard{
+  max-width: 720px;
+  margin: -40px auto 40px;
+  background: var(--card);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* Header row */
+.leaderboard-head{
+  display: grid;
+  grid-template-columns: 60px 1fr 120px;
+  padding: 14px 18px;
+  font-weight: 800;
+  font-size: 14px;
+  background: rgba(0,0,0,0.04);
+}
+
+/* Rows */
+.leaderboard-row{
+  display: grid;
+  grid-template-columns: 60px 1fr 120px;
+  padding: 14px 18px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  align-items: center;
+  font-size: 15px;
+}
+
+.leaderboard-row:hover{
+  background: rgba(0,0,0,0.03);
+}

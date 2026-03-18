@@ -59,6 +59,10 @@ def home_redirect(meal_id):
                            generic_tip=generic_tip)
 
 
-@app.route("/leaderboard", methods = ['GET', 'POST'])
+@app.route("/leaderboard")
 def leaderboard():
-    return render_template('LeaderboardPage.html')
+    users = db.session.query(User.username, User.weekly_score)\
+        .order_by(User.weekly_score.desc())\
+        .all()
+
+    return render_template('LeaderboardPage.html', usernames=users)

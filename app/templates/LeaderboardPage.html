@@ -1,11 +1,36 @@
 {% extends "base.html" %}
 
-{% block title %}Leaderboard {% endblock %}
+{% block title %}Leaderboard{% endblock %}
+
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/log_meal.css') }}">
 {% endblock %}
 
-
 {% block content %}
-<h1>Nothing here yet</h1>
+<div class="dash">
+
+  <!-- Header -->
+  <div class="dash-hero">
+    <h1 class="dash-title">Leaderboard</h1>
+    <p class="dash-subtitle">Most emissions saved this week (kgCO2e)</p>
+  </div>
+
+  <!-- Leaderboard Table -->
+  <div class="leaderboard">
+    <div class="leaderboard-head">
+      <div>#</div>
+      <div>Name</div>
+      <div>Score</div>
+    </div>
+
+    {% for username, score in usernames %}
+    <div class="leaderboard-row">
+      <div>{{ loop.index }}</div>
+      <div>{{ username }}</div>
+      <div>{{ score }}</div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
 {% endblock %}
