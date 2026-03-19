@@ -14,21 +14,22 @@
         <div class="auth-card">
             <h1 class="auth-title">Login</h1>
 
-            <form class="auth-form" method="POST">
-                <div class="field">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
 
-                <div class="field">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
+                <form action="" method="post" novalidate>
+                    {{ form.hidden_tag() }}
+                    <p>
+                        {{ form.username.label }}<br>
+                        {{ form.username(size=32) }}
+                    </p>
+                    <p>
+                        {{ form.password.label }}<br>
+                        {{ form.password(size=32) }}
+                    </p>
+                    <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+                    <p>{{ form.submit() }}</p>
+                </form>
 
-                <button type="submit" class="auth-btn">
-                    Login
-                </button>
-            </form>
+            <a href="{{ url_for('signup')}}">Register</a>
         </div>
     </section>
 </main>

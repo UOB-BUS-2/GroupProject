@@ -1,5 +1,5 @@
 from datetime import date
-from app import db
+from app import db, login
 import sqlalchemy.orm as so
 import sqlalchemy as sa
 from flask import current_app
@@ -16,8 +16,8 @@ class User(db.Model,UserMixin):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
     username: so.Mapped[str] = so.mapped_column(sa.String(63), index=True,
                                                 unique=True)
-    # email: so.Mapped[str] = so.mapped_column(sa.String(119), index=True,
-    #                                          unique=True)
+    email: so.Mapped[str] = so.mapped_column(sa.String(119), index=True,
+                                             unique=True)
     password_hash: so.Mapped[Optional[str]] = so.mapped_column(sa.String(255))
 
     weekly_score: so.Mapped[int] = so.mapped_column(sa.Integer, index=True, default=0)
@@ -75,3 +75,6 @@ class Meal(db.Model):
     def __repr__(self):
         return f"{self.id}. {self.carb}, {self.protein}, {self.veg} - {self.total_emissions} - {self.date_added}"
 
+@login.user_loader
+def load_user(id):
+    return db.session.get(User, int(id))
