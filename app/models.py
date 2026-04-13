@@ -10,17 +10,22 @@ from typing import Optional
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
-
 class User(db.Model,UserMixin):
     __tablename__ = 'users'
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
-    username: so.Mapped[str] = so.mapped_column(sa.String(63), index=True,
-                                                unique=True)
-    email: so.Mapped[str] = so.mapped_column(sa.String(119), index=True,
-                                             unique=True)
+    username: so.Mapped[str] = so.mapped_column(sa.String(63), index=True, unique=True)
+    email: so.Mapped[str] = so.mapped_column(sa.String(119), index=True, unique=True)
     password_hash: so.Mapped[Optional[str]] = so.mapped_column(sa.String(255))
-
     weekly_score: so.Mapped[int] = so.mapped_column(sa.Integer, index=True, default=0)
+
+    meals: so.Mapped[list['Meal']] = so.relationship(back_populates='user')
+
+    def get_leaderboard(self):
+        leaderboard = []
+        for user in User.query.all():
+            leaderboard.append((user.weekly_score, user.username))
+        leaderboard.sort()
+        return leaderboard
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -41,6 +46,9 @@ class Meal(db.Model):
     veg: so.Mapped[str] = so.mapped_column(sa.String(16))
     total_emissions: so.Mapped[float] = so.mapped_column(sa.Float, default=0)
     date_added: so.Mapped[str] = so.mapped_column(sa.Date, default=date.today())
+
+    user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id), index=True)
+    user: so.Mapped[User] = so.relationship(back_populates='meals')
 
     def calculate_emissions(self):
         file_path = os.path.join(current_app.root_path, "static", "food_emissions_portions.csv")

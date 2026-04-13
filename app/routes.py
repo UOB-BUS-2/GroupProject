@@ -2,8 +2,7 @@ import os
 import random
 
 from app import app, db
-from flask import (render_template, current_app, redirect, url_for, flash,
-                   request)
+from flask import render_template, current_app, redirect, url_for, flash, request
 from app.models import User, Meal
 from app.forms import LogMeal, LoginForm, RegistrationForm
 
@@ -69,25 +68,42 @@ def logout():
 
 @app.route("/log_meal",methods=["GET","POST"])
 def log_meal():
+    leaderboard = current_user.get_leaderboard()
+    for i in leaderboard:
+        if i[1] == current_user.username:
+            rank = leaderboard.index(i) + 1
+
+    emissions = current_user.weekly_score
+
     form = LogMeal()
     if form.validate_on_submit():
+        if form.carb_selected.data == "None" or form.protein_selected.data == "None" or form.veg_selected.data == "None":
+            flash("You must select a food item from all 3 dropdown boxes.")
+            return redirect(url_for("log_meal"))
         logged_meal = Meal(
             carb=form.carb_selected.data,
             protein=form.protein_selected.data,
-            veg=form.veg_selected.data
+            veg=form.veg_selected.data,
+            user_id=current_user.id
         )
         logged_meal.calculate_emissions()
+        current_user.weekly_score += logged_meal.total_emissions
         db.session.add(logged_meal)
         db.session.commit()
         return redirect(url_for('home_redirect', meal_id=logged_meal.id))
-    return render_template("log_meal.html", form=form)
+
+    return render_template("log_meal.html",
+                           form=form,
+                           rank=rank,
+                           emissions=emissions,
+                           user_name=current_user.username)
 
 
 @app.route("/home_redirect/<meal_id>", methods=["GET","POST"])
 def home_redirect(meal_id):
     logged_meal = Meal.query.get(meal_id)
 
-    total_emissions = round(logged_meal.total_emissions, 3)
+    total_emissions = logged_meal.total_emissions
     qualitative_impact = logged_meal.get_qualitative_impact()
     car_miles = logged_meal.calculate_equivalent_miles()
 
@@ -108,7 +124,7 @@ def home_redirect(meal_id):
 @login_required
 def leaderboard():
     users = db.session.query(User.username, User.weekly_score)\
-        .order_by(User.weekly_score.desc())\
+        .order_by(User.weekly_score.asc())\
         .all()
 
     return render_template('LeaderboardPage.html', usernames=users)

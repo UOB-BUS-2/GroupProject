@@ -17,18 +17,17 @@
     <!-- Stat cards -->
     <section class="stats">
         <div class="stat-card">
-            <div class="stat-label">Total GHG emissions saved</div>
+            <div class="stat-label">Total GHG emissions</div>
             <div class="stat-row">
-                <div class="stat-value">{{ emissions_saved if emissions_saved else 68 }}</div>
-                <div class="stat-unit">CO2/kg</div>
+                <div class="stat-value">{{ emissions|round(2) if emissions else 0 }}</div>
+                <div class="stat-unit">kgCO2e</div>
             </div>
         </div>
 
         <div class="stat-card stat-card--right">
             <div class="stat-label">Leaderboard Ranking</div>
             <div class="rank-row">
-                <div class="rank-value">{{ rank if rank else 120 }}</div>
-                <div class="rank-suffix">th</div>
+                <div class="rank-value">{{ rank if rank else 0 }}</div>
             </div>
         </div>
     </section>

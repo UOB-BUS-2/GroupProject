@@ -1,27 +1,59 @@
-from app.models import *
 from app import db
-def setup():
-    db.drop_all()
+from app.models import *
 
+
+def setup():
     db.create_all()
 
-    # Building the Leaderboard Users
+    u1 = User(username='Anthony', email="anthony@test.com")
+    u1.set_password('hello')
 
-    u1 = User(username='VKC', weekly_score=10)
-    u1.set_password('12345')
+    u2 = User(username='James', email="james@test.com")
+    u2.set_password('hello')
 
-    db.session.add(u1)
-    db.session.commit()
+    u3 = User(username='George', email="george@test.com")
+    u3.set_password('hello')
 
-    u2 = User(username='GG', weekly_score=5)
-    u2.set_password('12345')
+    u4 = User(username='Ed', email="ed@test.com")
+    u4.set_password('hello')
 
-    db.session.add(u2)
-    db.session.commit()
+    u5 = User(username='Viraj', email="viraj@test.com")
+    u5.set_password('hello')
 
-    u3 = User(username='EL', weekly_score=2)
-    u3.set_password('12345')
+    # m1 = Meal(
+    #     carb="x",
+    #     protein="y",
+    #     veg="z",
+    #     total_emissions=12,
+    #     user_id=1
+    # )
+    #
+    # m2 = Meal(
+    #     carb="x",
+    #     protein="y",
+    #     veg="z",
+    #     total_emissions=8,
+    #     user_id=2
+    # )
+    #
+    # m3 = Meal(
+    #     carb="x",
+    #     protein="y",
+    #     veg="z",
+    #     total_emissions=5,
+    #     user_id=3
+    # )
+    #
+    # m4 = Meal(
+    #     carb="x",
+    #     protein="y",
+    #     veg="z",
+    #     total_emissions=4.6,
+    #     user_id=4
+    # )
 
-    db.session.add(u3)
+    instances = [u1, u2, u3, u4, u5]
+
+    db.session.add_all(instances)
     db.session.commit()
 
