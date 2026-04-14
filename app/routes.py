@@ -15,7 +15,17 @@ from urllib.parse import urlsplit
 @app.route("/",methods=["GET","POST"])
 @login_required
 def index():
-    return render_template("LandingPage.html")
+    last_7_meals = current_user.meals[-7:]
+    protein_count = {}
+    for meal in last_7_meals:
+        if meal.protein not in protein_count:
+            protein_count[meal.protein] = 1
+        else:
+            protein_count[meal.protein] += 1
+    return render_template("index.html",
+                           last_7_meals=last_7_meals,
+                           protein_count=protein_count,
+                           user_name=current_user.username)
 
 
 @app.route("/signup",methods=["GET","POST"])

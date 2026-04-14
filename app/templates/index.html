@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Log a meal{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/log_meal.css') }}">
+{% endblock %}
+
+{% block content %}
+<main class="dash">
+    <!-- Top banner -->
+    <section class="dash-hero">
+        <h1 class="dash-title">{{"Hey " + user_name if user_name else "You are not logged in" }}</h1>
+        <p class="dash-subtitle">Here is how you are improving the environment</p>
+    </section>
+
+    <!-- Stat cards -->
+    <section class="stats">
+        <div class="stat-card">
+            <div class="stat-title">Your last 7 meals</div>
+            {% for meal in last_7_meals %}
+            <div class="stat-row">
+                <div class="stat-label">{{ meal.protein }} -- {{ meal.carb }} -- {{ meal.veg }}</div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <div class="stat-card stat-card--right">
+            <div class="stat-title">In the last week you had:</div>
+            {% for k, v in protein_count.items() %}
+            <div class="stat-row">
+                <div class="stat-value">{{ v }}x</div>
+                <div class="stat-label">{{ k }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Personalised tips -->
+    <h3 style="text-align:center">Personalised tip</h3>
+    {% if "beef" in protein_count.keys() %}
+    <p style="text-align:center">Try swapping out beef for pork!</p>
+    {% elif "lamb" in protein_count.keys() %}
+    <p style="text-align:center">Try swapping out lamb for turkey!</p>
+    {% elif "shrimp" in protein_count.keys() %}
+    <p style="text-align:center">Try swapping out shrimp for wild fish!</p>
+    {% elif "pork" in protein_count.keys() %}
+    <p style="text-align:center">Try swapping out pork for tofu!</p>
+    {% else %}
+    <p style="text-align:center">You have a very low environmental impact, keep doing what you're doing!</p>
+    {% endif %}
+    {% endblock %}
