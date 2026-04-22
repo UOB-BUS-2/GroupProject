@@ -133,6 +133,8 @@ def home_redirect(meal_id):
 @app.route("/leaderboard")
 @login_required
 def leaderboard():
+
+
     users = db.session.query(User.username, User.weekly_score)\
         .order_by(User.weekly_score.asc())\
         .all()
