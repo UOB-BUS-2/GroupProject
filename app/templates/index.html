@@ -20,7 +20,7 @@
             <div class="stat-title">Your last 7 meals</div>
             {% for meal in last_7_meals %}
             <div class="stat-row">
-                <div class="stat-label">{{ meal.protein }} -- {{ meal.carb }} -- {{ meal.veg }}</div>
+                <div class="stat-label">{{ meal.protein }}, {{ meal.carb }}, {{ meal.veg }} - {{ meal.total_emissions|round(2) }} kgCO2e</div>
             </div>
             {% endfor %}
 
