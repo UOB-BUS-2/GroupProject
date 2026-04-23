@@ -1,5 +1,5 @@
-from app import app, db  # noqa: E402
-from app.models import User  # noqa: E402
+from app import app, db
+from app.models import User
 
 
 def _setup_only_allowed_users():
@@ -8,10 +8,10 @@ def _setup_only_allowed_users():
 
     # Build a clean schema so there are no leftover users from app.db.
     with app.app_context():
-        db.drop_all()
+        db.drop_all() #basically a test database clearing the table and creating a new one per run
         db.create_all()
 
-        # Only allowed test users (per your requirement).
+        # Only allowed test users to test the leadrboard
         u1 = User(username="viraj", email="virajkc1@example.com", weekly_score=10)
         u1.set_password("hello")
 
