@@ -1,148 +1,67 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+/* =========================
+   1. GLOBAL RESETS & VARS
+   ========================= */
+*, *::before, *::after { box-sizing: border-box; }
 
 :root {
-  /* Global palette */
-  --bg: #ffffff;
-  --text: #111111;
-  --muted: #7a7a7a;
-  --nav-muted: #9a9a9a;
+  /* Colors */
+  --bg-main: #ffffff;
+  --bg-page: #eef1f1;
+  --lavender: #cfd5ff;
+  --blue-primary: #0b3dff;
+  --blue-dark: #0013b8;
 
-  /* Landing CTA pill */
-  --pill-bg: #cdd3ff;
-  --pill-text: #111111;
+  /* Text */
+  --text-main: #111111;
+  --text-muted: #7a7a7a;
+  --text-nav: #9a9a9a;
+
+  /* UI Elements */
+  --card-bg: #ffffff;
+  --shadow-sm: 0 8px 18px rgba(0,0,0,0.06);
+  --placeholder: #d9d9d9;
+  --gray-box: #d8d8d8;
 
   /* Layout */
-  --container: 1120px;
+  --container-max: 1120px;
   --radius-lg: 48px;
-
-  /* Placeholder (used by landing if you ever want it globally) */
-  --placeholder: #d9d9d9;
 }
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
 }
 
-::selection {
-  background: rgba(205, 211, 255, 0.6);
-}
+::selection { background: rgba(205, 211, 255, 0.6); }
 
 /* =========================
-   Navigation Bar (Landing style)
-   Works with your base.html markup:
-   <nav class="nav">
-     <div class="nav-inner">
-       <div class="nav-brand"><a>...</a></div>
-       <div class="nav-links">...</div> or <ul class="nav-links">...</ul>
-       <a class="nav-cta">...</a>
-     </div>
-   </nav>
+   2. SHARED NAVIGATION
    ========================= */
-
-.nav {
-  width: 100%;
-  background: transparent;
-  box-shadow: none;
-  position: static;
-}
-
+.nav { width: 100%; background: transparent; }
 .nav-inner {
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 22px 24px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  max-width: var(--container-max); margin: 0 auto; padding: 22px 24px;
+  display: flex; align-items: center; justify-content: space-between;
 }
-
-/* Brand */
-.nav-brand a {
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 700;
-  font-size: 22px;
-}
-
-/* Links */
-.nav-links {
-  list-style: none; /* safe for <ul>, harmless for <div> */
-  display: flex;
-  align-items: center;
-  gap: 42px;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: var(--nav-muted);
-  font-weight: 500;
-  font-size: 16px;
-}
-
-.nav-links a:hover {
-  color: var(--text);
-}
-
-/* CTA pill (Login / Logout / Signup etc.) */
+.nav-brand a { text-decoration: none; color: var(--text-main); font-weight: 700; font-size: 22px; }
+.nav-links { list-style: none; display: flex; align-items: center; gap: 42px; margin: 0; padding: 0; }
+.nav-links a { text-decoration: none; color: var(--text-nav); font-weight: 500; font-size: 16px; }
+.nav-links a:hover { color: var(--text-main); }
 .nav-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 10px 18px;
-  border-radius: 999px;
-  background: var(--pill-bg);
-  color: var(--pill-text) !important;
-  font-weight: 600;
-  text-decoration: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 18px; border-radius: 999px;
+  background: var(--lavender); color: var(--text-main) !important;
+  font-weight: 600; text-decoration: none;
 }
+.nav-cta:hover { filter: brightness(0.97); }
 
-.nav-cta:hover {
-  filter: brightness(0.97);
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .nav-links {
-    gap: 22px;
-  }
-}
+@media (max-width: 900px) { .nav-links { gap: 22px; } }
 
 /* =========================
-   Meal Impact Analysis page
-   (HomeRedirect.html)
+   3. HOME REDIRECT COMPONENTS
    ========================= */
-
-.analysis-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center;
-}
-
-.gauge-wrapper {
-  margin: 30px auto;
-  max-width: 400px;
-}
-
-.responsive-gauge {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-blockquote {
-  font-style: italic;
-  background: #f9f9f9;
-  padding: 15px;
-  border-left: 5px solid #2ecc71;
-}
+.analysis-container { max-width: 800px; margin: 0 auto; padding: 20px; text-align: center; }
+.gauge-wrapper { margin: 30px auto; max-width: 400px; }
+.responsive-gauge { width: 100%; height: auto; display: block; }
+blockquote { font-style: italic; background: #f9f9f9; padding: 15px; border-left: 5px solid #2ecc71; }

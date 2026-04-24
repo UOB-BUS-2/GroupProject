@@ -1,378 +1,41 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-:root{
-  --lavender: #cfd5ff;
-  --page-bg: #eef1f1;
-  --card: #ffffff;
-  --text: #101010;
-  --muted: #3c3c3c;
-  --shadow: 0 8px 18px rgba(0,0,0,0.06);
-}
-
-body{
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  background: var(--page-bg);
-  color: var(--text);
-}
-
-.dash{
-  min-height: 100vh;
-}
+/* Specific background for dashboard pages */
+body { background: var(--bg-page); }
+.dash { min-height: 100vh; }
 
 /* Top banner */
-.dash-hero{
-  background: var(--lavender);
-  padding: 34px 18px 64px;
-  text-align: center;
+.dash-hero { background: var(--lavender); padding: 34px 18px 64px; text-align: center; }
+.dash-title { margin: 0; font-size: 34px; font-weight: 800; }
+.dash-subtitle { margin: 6px 0 0; font-size: 14px; color: rgba(0,0,0,0.65); }
+
+/* Stats */
+.stats { max-width: 980px; margin: -42px auto 28px; padding: 0 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.stat-card { background: var(--card-bg); border-radius: 22px; box-shadow: var(--shadow-sm); padding: 16px 22px; min-height: 92px; display: flex; flex-direction: column; justify-content: center; }
+.stat-label { font-size: 14px; color: rgba(0,0,0,0.7); margin-bottom: 6px; }
+.stat-row { display: flex; align-items: baseline; gap: 12px; }
+.stat-value { font-size: 46px; line-height: 1; font-weight: 800; }
+.stat-title { font-size: 20px; line-height: 1; font-weight: 800; margin-bottom: 6px; }
+.stat-unit { font-size: 12px; color: rgba(0,0,0,0.7); }
+.rank-row { display: flex; align-items: baseline; justify-content: center; gap: 6px; }
+.rank-value { font-size: 46px; line-height: 1; font-weight: 800; }
+
+@media (max-width: 900px){ .stats { grid-template-columns: 1fr; margin-top: -36px; } }
+
+/* WTForms Form styling */
+.dash form { max-width: 980px; margin: 0 auto 48px; padding: 18px 22px; background: var(--card-bg); border-radius: 22px; box-shadow: var(--shadow-sm); }
+.dash form p { margin: 0 0 14px; }
+.dash form label { display: inline-block; margin: 0 0 8px; font-size: 14px; font-weight: 700; color: rgba(0,0,0,0.72); }
+.dash form select {
+  width: 100%; padding: 12px 14px; border-radius: 14px; border: 1px solid rgba(0,0,0,0.14);
+  background: #fff; font-size: 14px; outline: none; appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, rgba(0,0,0,0.55) 50%), linear-gradient(135deg, rgba(0,0,0,0.55) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 55%, calc(100% - 12px) 55%; background-size: 6px 6px, 6px 6px; background-repeat: no-repeat;
 }
+.dash form input[type="submit"] { width: 100%; border: 0; border-radius: 16px; padding: 12px 16px; font-weight: 800; background: var(--lavender); color: var(--text-main); cursor: pointer; transition: transform 120ms ease; }
+.dash form input[type="submit"]:hover { filter: brightness(0.98); transform: translateY(-1px); }
 
-.dash-title{
-  margin: 0;
-  font-size: 34px;
-  font-weight: 800;
-}
-
-.dash-subtitle{
-  margin: 6px 0 0;
-  font-size: 14px;
-  color: rgba(0,0,0,0.65);
-}
-
-/* Stat cards */
-.stats{
-  max-width: 980px;
-  margin: -42px auto 28px;
-  padding: 0 18px;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
-}
-
-.stat-card{
-  background: var(--card);
-  border-radius: 22px;
-  box-shadow: var(--shadow);
-  padding: 16px 22px;
-  min-height: 92px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.stat-label{
-  font-size: 14px;
-  color: rgba(0,0,0,0.7);
-  margin-bottom: 6px;
-}
-
-.stat-row{
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-}
-
-.stat-value{
-  font-size: 46px;
-  line-height: 1;
-  font-weight: 800;
-}
-
-.stat-title{
-  font-size: 20px;
-  line-height: 1;
-  font-weight: 800;
-  margin-bottom: 6px;
-}
-
-.stat-unit{
-  font-size: 12px;
-  color: rgba(0,0,0,0.7);
-}
-
-/* Ranking styles */
-.rank-row{
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 6px;
-}
-
-.rank-value{
-  font-size: 46px;
-  line-height: 1;
-  font-weight: 800;
-}
-
-.rank-suffix{
-  font-size: 14px;
-  font-weight: 700;
-  transform: translateY(-14px); /* make it look like superscript */
-}
-
-/* Tiles */
-.tiles{
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 8px 18px 42px;
-
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
-}
-
-.tile{
-  background: var(--card);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-  min-height: 118px;
-  padding: 14px 16px;
-
-  display: grid;
-  grid-template-columns: 1fr 92px;
-  align-items: center;
-  column-gap: 10px;
-}
-
-.tile--empty{
-  grid-template-columns: 1fr;
-}
-
-.tile-head{
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.tile-title{
-  font-weight: 800;
-  font-size: 16px;
-}
-
-.tile-underline{
-  width: 56px;
-  height: 2px;
-  background: #111;
-  border-radius: 999px;
-}
-
-.tile-media{
-  width: 84px;
-  height: 84px;
-  border-radius: 999px;
-  overflow: hidden;
-  background: transparent;
-  display: grid;
-  place-items: center;
-}
-
-.tile-media img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.tile-media--empty{
-  background: transparent;
-}
-
-/* Responsive */
-@media (max-width: 900px){
-  .stats{
-    grid-template-columns: 1fr;
-    margin-top: -36px;
-  }
-  .tiles{
-    grid-template-columns: 1fr;
-  }
-  .tile{
-    grid-template-columns: 1fr 92px;
-  }
-}
-
-/* =========================
-   Form styling (WTForms)
-   ========================= */
-
-/* Form container */
-.dash form{
-  max-width: 980px;
-  margin: 0 auto 48px;
-  padding: 0 18px;
-}
-
-/* Optional: give the form itself a card look */
-.dash form{
-  background: var(--card);
-  border-radius: 22px;
-  box-shadow: var(--shadow);
-  padding: 18px 22px;
-}
-
-/* Each <p> acts like a field row */
-.dash form p{
-  margin: 0 0 14px;
-}
-
-/* Labels */
-.dash form label{
-  display: inline-block;
-  margin: 0 0 8px;
-  font-size: 14px;
-  font-weight: 700;
-  color: rgba(0,0,0,0.72);
-}
-
-/* Text inputs, selects, textareas (covers most WTForms widgets) */
-.dash form input[type="text"],
-.dash form input[type="email"],
-.dash form input[type="password"],
-.dash form input[type="number"],
-.dash form input[type="date"],
-.dash form input[type="time"],
-.dash form select,
-.dash form textarea{
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 14px;
-  border: 1px solid rgba(0,0,0,0.14);
-  background: #fff;
-  color: var(--text);
-  font-size: 14px;
-  outline: none;
-  transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
-}
-
-/* Focus state */
-.dash form input[type="text"]:focus,
-.dash form input[type="email"]:focus,
-.dash form input[type="password"]:focus,
-.dash form input[type="number"]:focus,
-.dash form input[type="date"]:focus,
-.dash form input[type="time"]:focus,
-.dash form select:focus,
-.dash form textarea:focus{
-  border-color: rgba(17,17,17,0.35);
-  box-shadow: 0 0 0 4px rgba(207,213,255,0.65); /* uses your lavender */
-}
-
-/* Make select feel consistent */
-.dash form select{
-  appearance: none;
-  background-image:
-    linear-gradient(45deg, transparent 50%, rgba(0,0,0,0.55) 50%),
-    linear-gradient(135deg, rgba(0,0,0,0.55) 50%, transparent 50%);
-  background-position:
-    calc(100% - 18px) 55%,
-    calc(100% - 12px) 55%;
-  background-size: 6px 6px, 6px 6px;
-  background-repeat: no-repeat;
-  padding-right: 42px;
-}
-
-/* Submit button */
-.dash form input[type="submit"],
-.dash form button,
-.dash form .btn{
-  width: 100%;
-  border: 0;
-  border-radius: 16px;
-  padding: 12px 16px;
-  font-weight: 800;
-  font-size: 14px;
-  cursor: pointer;
-  background: var(--lavender);
-  color: #111;
-  box-shadow: 0 10px 22px rgba(0,0,0,0.08);
-  transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
-}
-
-.dash form input[type="submit"]:hover,
-.dash form button:hover,
-.dash form .btn:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 14px 28px rgba(0,0,0,0.10);
-  filter: brightness(0.98);
-}
-
-.dash form input[type="submit"]:active,
-.dash form button:active,
-.dash form .btn:active{
-  transform: translateY(0px);
-}
-
-/* Help text / errors (common WTForms patterns) */
-.dash form .help,
-.dash form small{
-  display: block;
-  margin-top: 6px;
-  font-size: 12px;
-  color: rgba(0,0,0,0.55);
-}
-
-.dash form .errors,
-.dash form ul.errors{
-  list-style: none;
-  padding: 0;
-  margin: 8px 0 0;
-  color: #8b1e1e;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-/* If WTForms adds error class to inputs */
-.dash form .is-invalid,
-.dash form input.error,
-.dash form select.error,
-.dash form textarea.error{
-  border-color: rgba(139,30,30,0.55);
-  box-shadow: 0 0 0 4px rgba(139,30,30,0.12);
-}
-
-/* Responsive tweak: keep padding comfortable on small screens */
-@media (max-width: 900px){
-  .dash form{
-    padding: 16px 18px;
-  }
-}
-
-/* Leaderboard container */
-.leaderboard{
-  max-width: 720px;
-  margin: -40px auto 40px;
-  background: var(--card);
-  border-radius: 22px;
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-/* Header row */
-.leaderboard-head{
-  display: grid;
-  grid-template-columns: 60px 1fr 120px;
-  padding: 14px 18px;
-  font-weight: 800;
-  font-size: 14px;
-  background: rgba(0,0,0,0.04);
-}
-
-/* Rows */
-.leaderboard-row{
-  display: grid;
-  grid-template-columns: 60px 1fr 120px;
-  padding: 14px 18px;
-  border-top: 1px solid rgba(0,0,0,0.06);
-  align-items: center;
-  font-size: 15px;
-}
-
-.leaderboard-row:hover{
-  background: rgba(0,0,0,0.03);
-}
+/* Leaderboard */
+.leaderboard { max-width: 720px; margin: -40px auto 40px; background: var(--card-bg); border-radius: 22px; box-shadow: var(--shadow-sm); overflow: hidden; }
+.leaderboard-head, .leaderboard-row { display: grid; grid-template-columns: 60px 1fr 120px; padding: 14px 18px; }
+.leaderboard-head { font-weight: 800; font-size: 14px; background: rgba(0,0,0,0.04); }
+.leaderboard-row { border-top: 1px solid rgba(0,0,0,0.06); font-size: 15px; }
+.leaderboard-row:hover { background: rgba(0,0,0,0.03); }
