@@ -4,7 +4,9 @@
     grid-template-columns: 1.1fr 1fr;
 }
 
-.auth-left { background: var(--lavender); }
+.auth-left {
+    background: var(--lavender);
+}
 
 .auth-right {
     display: flex;
@@ -76,6 +78,11 @@
 }
 
 @media (max-width: 900px) {
-    .auth-layout { grid-template-columns: 1fr; }
-    .auth-left { display: none; }
+    .auth-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-left {
+        display: none;
+    }
 }

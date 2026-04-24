@@ -53,8 +53,6 @@ header, main {
 .image-placeholder {
     width: min(520px, 100%);
     aspect-ratio: 1 / 1;
-    background: var(--placeholder);
-    border-radius: var(--radius-lg);
 }
 
 @media (max-width: 900px) {

@@ -3,57 +3,57 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block styles %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
 {% endblock %}
 
 {% block content %}
-  <main class="auth-layout">
+<main class="auth-layout">
     <section class="auth-left" aria-hidden="true"></section>
 
     <section class="auth-right">
-      <div class="auth-card">
-        <h1 class="auth-title">Sign Up</h1>
+        <div class="auth-card">
+            <h1 class="auth-title">Sign Up</h1>
 
-        <p class="auth-subtitle">
-          Already have an account?
-          <a class="auth-link" href="{{url_for('login')}}">Log in</a>
-        </p>
+            <p class="auth-subtitle">
+                Already have an account?
+                <a class="auth-link" href="{{url_for('login')}}">Log in</a>
+            </p>
 
-<form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}
-            {{ form.username(size=32) }}<br>
-            {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.email.label }}
-            {{ form.email(size=32) }}<br>
-            {% for error in form.email.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password.label }}
-            {{ form.password(size=32) }}<br>
-            {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password2.label }}
-            {{ form.password2(size=32) }}<br>
-            {% for error in form.password2.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.username.label }}
+                    {{ form.username(size=32) }}<br>
+                    {% for error in form.username.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.email.label }}
+                    {{ form.email(size=32) }}<br>
+                    {% for error in form.email.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.password.label }}
+                    {{ form.password(size=32) }}<br>
+                    {% for error in form.password.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.password2.label }}
+                    {{ form.password2(size=32) }}<br>
+                    {% for error in form.password2.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>{{ form.submit() }}</p>
+            </form>
 
 
-      </div>
+        </div>
     </section>
-  </main>
+</main>
 {% endblock %}

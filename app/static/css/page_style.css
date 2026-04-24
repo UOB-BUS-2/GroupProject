@@ -1,4 +1,6 @@
-body { background: var(--bg-page); }
+body {
+    background: var(--bg-page);
+}
 
 .dash-hero {
     background: var(--lavender);
@@ -6,7 +8,11 @@ body { background: var(--bg-page); }
     text-align: center;
 }
 
-.dash-title { margin: 0; font-size: 38px; font-weight: 800; }
+.dash-title {
+    margin: 0;
+    font-size: 38px;
+    font-weight: 800;
+}
 
 .stats {
     max-width: 1000px;
@@ -57,10 +63,19 @@ body { background: var(--bg-page); }
     text-transform: lowercase;
 }
 
-.text-red { color: #b30000; }
-.text-green { color: #166534; }
+.text-red {
+    color: #b30000;
+}
 
-.stat-title { font-size: 20px; font-weight: 800; margin-bottom: 15px; }
+.text-green {
+    color: #166534;
+}
+
+.stat-title {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
 
 .stat-subtitle {
     margin: 0;
@@ -112,8 +127,15 @@ body { background: var(--bg-page); }
     text-transform: capitalize;
 }
 
-.ing-tag--high { background: #ffdbdb; color: #b30000; }
-.ing-tag--low { background: #dcfce7; color: #166534; }
+.ing-tag--high {
+    background: #ffdbdb;
+    color: #b30000;
+}
+
+.ing-tag--low {
+    background: #dcfce7;
+    color: #166534;
+}
 
 .history-emission {
     font-size: 14px;
@@ -126,10 +148,14 @@ body { background: var(--bg-page); }
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.freq-name { font-weight: 600; text-transform: capitalize; }
+.freq-name {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
 .freq-count {
     background: var(--lavender);
     color: var(--blue-dark);
@@ -140,8 +166,11 @@ body { background: var(--bg-page); }
 }
 
 @media (max-width: 900px) {
-    .stats { grid-template-columns: 1fr; }
+    .stats {
+        grid-template-columns: 1fr;
+    }
 }
+
 /* =========================
    LEADERBOARD STYLES
    ========================= */
@@ -166,6 +195,7 @@ body { background: var(--bg-page); }
     align-items: center;
     gap: 15px; /* Adds a safety gap between columns */
 }
+
 .leaderboard-head {
     font-weight: 800;
     font-size: 14px;
@@ -197,6 +227,7 @@ body { background: var(--bg-page); }
     font-weight: 700;
     min-width: 150px; /* Stronger enforcement of the width */
 }
+
 /* =========================
    LOG MEAL FORM STYLES
    ========================= */
@@ -283,6 +314,7 @@ body { background: var(--bg-page); }
     color: var(--text-muted);
     margin-bottom: 4px;
 }
+
 .freq-container {
     flex-grow: 1;
     display: flex;
@@ -291,6 +323,7 @@ body { background: var(--bg-page); }
     justify-content: flex-start;
     padding: 20px 0; /* Adds a nice gap between the title and the first item */
 }
+
 /* Update this in dashboard.css */
 
 .freq-name {
@@ -359,7 +392,7 @@ body { background: var(--bg-page); }
 /* Action Tip Box */
 .action-tip {
     text-align: left;
-    border-top: 1px solid rgba(0,0,0,0.08);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
     padding-top: 30px;
 }
 
@@ -389,6 +422,7 @@ body { background: var(--bg-page); }
     /* Change this line */
     border-left: none;
 }
+
 /* Optional: Color-coded impact levels */
 .impact-header h1 strong {
     color: #b30000; /* Red for high impact */
