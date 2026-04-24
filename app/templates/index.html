@@ -23,14 +23,14 @@
                 CO<sub>2</sub>e</strong>.
             </div>
 
-<div class="comparison-display">
-    <span class="comparison-label">Your per-meal footprint is</span>
-    <span class="comparison-value">{{ comparison_delta }}%</span>
-    <span class="comparison-label {% if comparison_label == 'higher' %}text-red{% else %}text-green{% endif %}">
+            <div class="comparison-display">
+                <span class="comparison-label">Your per-meal footprint is</span>
+                <span class="comparison-value">{{ comparison_delta }}%</span>
+                <span class="comparison-label {% if comparison_label == 'higher' %}text-red{% else %}text-green{% endif %}">
         {{ comparison_label }}
     </span>
-    <span class="comparison-label">than average.</span>
-</div>
+                <span class="comparison-label">than average.</span>
+            </div>
 
         </div>
         <div class="stat-card">
@@ -77,7 +77,7 @@
                 <div class="freq-list">
                     {% for k, v in protein_count.items() %}
                     <div class="freq-item">
-                        <div class="freq-name {% if k in ['beef', 'lamb', 'shrimp'] %}freq-name--high{% endif %}">
+                        <div class="freq-name {% if k in high_impact %}freq-name--high{% endif %}">
                             {{ k }}
                         </div>
                         <div class="freq-count">x {{ v }}</div>
@@ -91,19 +91,30 @@
 
     </section>
 
-    <h3 style="text-align:center">Personalised tip</h3>
-    {# We check the 7-meal subset so the test passes as soon as beef is pushed out #}
-    {% if "beef" in tip_proteins %}
-    <p style="text-align:center">Try swapping out beef for pork!</p>
-    {% elif "lamb" in tip_proteins %}
-    <p style="text-align:center">Try swapping out lamb for turkey!</p>
-    {% elif "shrimp" in tip_proteins %}
-    <p style="text-align:center">Try swapping out shrimp for wild fish!</p>
-    {% elif "pork" in tip_proteins %}
-    <p style="text-align:center">Try swapping out pork for tofu!</p>
-    {% else %}
-    <p style="text-align:center">You have a very low environmental impact, keep doing what you're doing!</p>
-    {% endif %}
+    <section class="stats">
+        <div class="stat-card stat-card--full" style="margin-top: 20px;">
+            <div class="stat-title" style="text-align: center;">💡 Personalised Tip</div>
+
+            <div class="tip-content" style="text-align: center; font-size: 1.1rem; padding: 10px 0;">
+                {% if "beef" in tip_proteins %}
+                <p>Reducing <strong>beef</strong> is the fastest way to lower your footprint. Try a
+                    <strong>pork</strong> or <strong>lentil</strong> alternative!</p>
+                {% elif "lamb" in tip_proteins %}
+                <p><strong>Lamb</strong> has a high carbon cost. Consider swapping it for <strong>turkey</strong> or
+                    <strong>beans</strong> next time.</p>
+                {% elif "shrimp" in tip_proteins %}
+                <p>Farmed <strong>shrimp</strong> can have a high impact. Have you tried <strong>wild-caught
+                    fish</strong> or <strong>tofu</strong>?</p>
+                {% elif "pork" in tip_proteins %}
+                <p>You're doing great! Swapping <strong>pork</strong> for <strong>chickpeas</strong> or
+                    <strong>tofu</strong> would lower your impact even further.</p>
+                {% else %}
+                <p><strong>Excellent work!</strong> Your current meal choices have a very low environmental impact. Keep
+                    it up!</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
 
 </main>
 {% endblock %}

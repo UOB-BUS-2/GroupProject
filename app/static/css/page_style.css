@@ -67,7 +67,7 @@ body {
 .comparison-label {
     font-size: 24px;
     font-weight: 700;
-    text-transform: lowercase;
+    /*text-transform: lowercase;*/
 }
 
 .text-red {
