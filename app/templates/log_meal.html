@@ -20,7 +20,7 @@
             <div class="stat-label">Total GHG emissions</div>
             <div class="stat-row">
                 <div class="stat-value">{{ emissions|round(2) if emissions else 0 }}</div>
-                <div class="stat-unit">kgCO2e</div>
+                <div class="stat-unit">kg CO<sub>2</sub>e</div>
             </div>
         </div>
 
@@ -31,54 +31,6 @@
             </div>
         </div>
     </section>
-
-    <!--  &lt;!&ndash; Meal cards grid &ndash;&gt;-->
-    <!--  <section class="tiles">-->
-    <!--    &lt;!&ndash; Card 1 &ndash;&gt;-->
-    <!--    <article class="tile">-->
-    <!--      <div class="tile-head">-->
-    <!--        <span class="tile-title">Pasta</span>-->
-    <!--        <span class="tile-underline"></span>-->
-    <!--      </div>-->
-    <!--      <div class="tile-media">-->
-    <!--        &lt;!&ndash; replace with your own image &ndash;&gt;-->
-    <!--        <img-->
-    <!--          src="{{ url_for('static', filename='img/pasta.jpg') }}"-->
-    <!--          alt="Pasta"-->
-    <!--        >-->
-    <!--      </div>-->
-    <!--    </article>-->
-
-    <!--    &lt;!&ndash; Card 2 &ndash;&gt;-->
-    <!--    <article class="tile">-->
-    <!--      <div class="tile-head">-->
-    <!--        <span class="tile-title">Pizza</span>-->
-    <!--        <span class="tile-underline"></span>-->
-    <!--      </div>-->
-    <!--      <div class="tile-media">-->
-    <!--        <img-->
-    <!--          src="{{ url_for('static', filename='img/pizza.jpg') }}"-->
-    <!--          alt="Pizza"-->
-    <!--          onerror="this.style.display='none'; this.parentElement.classList.add('tile-media&#45;&#45;empty');"-->
-    <!--        >-->
-    <!--      </div>-->
-    <!--    </article>-->
-
-    <!--    &lt;!&ndash; Card 3 (empty like screenshot) &ndash;&gt;-->
-    <!--    <article class="tile">-->
-    <!--      <div class="tile-head">-->
-    <!--        <span class="tile-title">Lasagne</span>-->
-    <!--        <span class="tile-underline"></span>-->
-    <!--      </div>-->
-    <!--      <div class="tile-media tile-media&#45;&#45;empty"></div>-->
-    <!--    </article>-->
-
-    <!--    &lt;!&ndash; Row 2 placeholders &ndash;&gt;-->
-    <!--    <article class="tile tile&#45;&#45;empty"></article>-->
-    <!--    <article class="tile tile&#45;&#45;empty"></article>-->
-    <!--    <article class="tile tile&#45;&#45;empty"></article>-->
-    <!--  </section>-->
-
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
@@ -87,6 +39,7 @@
         </p>
         <p> {{ form.carb_selected.label }} <br>
             {{ form.carb_selected }} <br>
+        <p>
         <p> {{ form.veg_selected.label }} <br>
             {{ form.veg_selected }} <br>
         </p>

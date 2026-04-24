@@ -12,23 +12,34 @@ from flask_login import login_user, current_user, login_required, logout_user
 from urllib.parse import urlsplit
 
 
-@app.route("/",methods=["GET","POST"])
-@login_required
+@app.route("/", methods=["GET", "POST"])
+#@login_required
 def index():
-    last_7_meals = current_user.meals[-7:]
-    protein_count = {}
-    for meal in last_7_meals:
-        if meal.protein not in protein_count:
-            protein_count[meal.protein] = 1
-        else:
-            protein_count[meal.protein] += 1
-    return render_template("index.html",
-                           last_7_meals=last_7_meals,
-                           protein_count=protein_count,
-                           user_name=current_user.username)
+    if current_user.is_authenticated:
+        last_7_meals = current_user.meals[-7:][::-1]
+        protein_count = {}
+        weekly_total = 0
+        for meal in last_7_meals:
+            weekly_total += meal.total_emissions
+            if meal.protein not in protein_count:
+                protein_count[meal.protein] = 1
+            else:
+                protein_count[meal.protein] += 1
+
+        sorted_protein_count = dict(
+            sorted(protein_count.items(), key=lambda item: item[1],
+                   reverse=True))  # just so it lists the protein count in the 'in the last week you had' in order of quantity (desc)
+        return render_template("index.html",
+                               last_7_meals=last_7_meals,
+                               protein_count=sorted_protein_count,
+                               user_name=current_user.username, weekly_total=weekly_total)
+    else:
+        return render_template("LandingPage.html",
+                               title="Welcome to FoodApp",
+                               headline="Building a Sustainable Future")
 
 
-@app.route("/signup",methods=["GET","POST"])
+@app.route("/signup", methods=["GET", "POST"])
 def signup():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
@@ -46,7 +57,7 @@ def signup():
     return render_template('SignupPage.html', title='Register', form=form)
 
 
-@app.route("/login",methods=["GET","POST"])
+@app.route("/login", methods=["GET", "POST"])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
@@ -62,7 +73,8 @@ def login():
             return redirect(url_for('login'))
 
         login_user(user, remember=form.remember_me.data)
-        next_page = request.args.get('next') # this code is about redirecting users to a specific page they tried to access before logging in
+        next_page = request.args.get(
+            'next')  # this code is about redirecting users to a specific page they tried to access before logging in
 
         if not next_page or urlsplit(next_page).netloc != '':
             next_page = url_for('index')
@@ -70,13 +82,15 @@ def login():
 
     return render_template('LoginPage.html', title='Sign In', form=form)
 
+
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
 
 
-@app.route("/log_meal",methods=["GET","POST"])
+@app.route("/log_meal", methods=["GET", "POST"])
+@login_required
 def log_meal():
     leaderboard = current_user.get_leaderboard()
     for i in leaderboard:
@@ -109,7 +123,7 @@ def log_meal():
                            user_name=current_user.username)
 
 
-@app.route("/home_redirect/<meal_id>", methods=["GET","POST"])
+@app.route("/home_redirect/<meal_id>", methods=["GET", "POST"])
 def home_redirect(meal_id):
     logged_meal = Meal.query.get(meal_id)
 
@@ -133,10 +147,8 @@ def home_redirect(meal_id):
 @app.route("/leaderboard")
 @login_required
 def leaderboard():
-
-
-    users = db.session.query(User.username, User.weekly_score)\
-        .order_by(User.weekly_score.asc())\
+    users = db.session.query(User.username, User.weekly_score) \
+        .order_by(User.weekly_score.asc()) \
         .all()
 
     return render_template('LeaderboardPage.html', usernames=users)

@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<header class="nav">
-    <div class="nav-inner">
-
-        <div class="nav-brand">
-            <a href="{{ url_for('log_meal') }}">Log a meal</a>
-        </div>
-
-        <nav class="nav-links">
-            <a href="{{ url_for('index') }}">Home</a>
-            <a href="{{url_for('leaderboard') }}">Leaderboard</a>
-            <a href="{{url_for('login')}}">Login</a>
-            <a href="{{url_for('logout')}}">Logout</a>
-            <a href="{{url_for('signup')}}" class="signup-btn">
-                Sign Up
-            </a>
-
-        </nav>
-
-    </div>
-</header>
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     {% block styles %}{% endblock %}
-
 </head>
 <body>
+<header class="nav">
+    <div class="nav-inner">
+        <div class="nav-brand">
+            <a href="{{ url_for('log_meal') }}">Log a meal</a>
+        </div>
+        <nav class="nav-links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('leaderboard') }}">Leaderboard</a>
+
+            {% if current_user.is_authenticated %}
+            <div class="nav-user-dropdown">
+                <button class="dropdown-trigger">
+                    <strong>{{ current_user.username }}</strong> ▾
+                </button>
+                <div class="dropdown-content">
+                    <span class="user-info">Signed in as <strong>{{ current_user.username }}</strong></span>
+                    <hr>
+                    <a href="{{ url_for('logout') }}" class="logout-link">Logout</a>
+                </div>
+            </div>
+            {% else %}
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('signup') }}" class="nav-cta">Sign Up</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
 
 {% block content %}
 {% endblock %}

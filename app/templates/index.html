@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Log a meal{% endblock %}
+{% block title %}Dashboard{% endblock %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/log_meal.css') }}">
@@ -8,36 +8,75 @@
 
 {% block content %}
 <main class="dash">
-    <!-- Top banner -->
     <section class="dash-hero">
         <h1 class="dash-title">{{"Hey " + user_name if user_name else "You are not logged in" }}</h1>
         <p class="dash-subtitle">Here is how you are improving the environment</p>
+
+        <div style="margin-top: 24px; font-size: 38px; font-weight: 800; color: var(--blue-dark); line-height: 1;">
+            {{ weekly_total|round(2) }}
+            <span style="font-size: 16px; font-weight: 600; color: var(--text-main); vertical-align: middle;">
+                kg CO<sub>2</sub>e this week
+            </span>
+        </div>
     </section>
 
-    <!-- Stat cards -->
     <section class="stats">
+
         <div class="stat-card">
             <div class="stat-title">Your last 7 meals</div>
-            {% for meal in last_7_meals %}
-            <div class="stat-row">
-                <div class="stat-label">{{ meal.protein }}, {{ meal.carb }}, {{ meal.veg }} - {{ meal.total_emissions|round(2) }} kgCO2e</div>
-            </div>
-            {% endfor %}
+            <div class="history-list">
 
+                {# Define our impact categories based on standard GHG data #}
+                {% set high_impact = ['beef', 'lamb', 'shrimp'] %}
+                {% set low_impact = ['tofu', 'lentils', 'chickpeas', 'beans', 'bread', 'potato', 'pasta', 'oats',
+                'carrot', 'broccoli', 'tomato', 'onion'] %}
+
+                {% for meal in last_7_meals %}
+                <div class="history-item">
+
+                    <div class="history-left">
+                        <div class="history-date">{{ meal.date_added }}</div>
+                        <div class="history-ingredients">
+                            <span class="ing-tag {% if meal.protein in high_impact %}ing-tag--high{% elif meal.protein in low_impact %}ing-tag--low{% endif %}">
+                                {{ meal.protein }}
+                            </span>
+                            <span class="ing-tag {% if meal.carb in high_impact %}ing-tag--high{% elif meal.carb in low_impact %}ing-tag--low{% endif %}">
+                                {{ meal.carb }}
+                            </span>
+                            <span class="ing-tag {% if meal.veg in high_impact %}ing-tag--high{% elif meal.veg in low_impact %}ing-tag--low{% endif %}">
+                                {{ meal.veg }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="history-emission {% if meal.get_qualitative_impact() in ['high', 'very_high'] %}history-emission--high{% endif %}">
+                        {{ meal.total_emissions|round(2) }} kg CO<sub>2</sub>e
+                    </div>
+                </div>
+                {% else %}
+                <div class="stat-label" style="margin-top: 10px;">You haven't logged any meals yet!</div>
+                {% endfor %}
+            </div>
         </div>
 
         <div class="stat-card stat-card--right">
             <div class="stat-title">In the last week you had:</div>
-            {% for k, v in protein_count.items() %}
-            <div class="stat-row">
-                <div class="stat-value">{{ v }}x</div>
-                <div class="stat-label">{{ k }}</div>
+            <div class="freq-list">
+                {% for k, v in protein_count.items() %}
+                <div class="freq-item">
+                    <div class="freq-name {% if k in ['beef', 'lamb', 'shrimp'] %}freq-name--high{% endif %}">
+                        {{ k }}
+                    </div>
+                    <div class="freq-count"> x {{ v }}</div>
+                </div>
+                {% else %}
+                <div class="stat-label" style="margin-top: 10px;">No data to display.</div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
+
     </section>
 
-    <!-- Personalised tips -->
     <h3 style="text-align:center">Personalised tip</h3>
     {% if "beef" in protein_count.keys() %}
     <p style="text-align:center">Try swapping out beef for pork!</p>
@@ -50,4 +89,6 @@
     {% else %}
     <p style="text-align:center">You have a very low environmental impact, keep doing what you're doing!</p>
     {% endif %}
-    {% endblock %}
+
+</main>
+{% endblock %}

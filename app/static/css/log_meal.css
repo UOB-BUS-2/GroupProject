@@ -1,41 +1,299 @@
 /* Specific background for dashboard pages */
-body { background: var(--bg-page); }
-.dash { min-height: 100vh; }
+body {
+    background: var(--bg-page);
+}
+
+.dash {
+    min-height: 100vh;
+}
 
 /* Top banner */
-.dash-hero { background: var(--lavender); padding: 34px 18px 64px; text-align: center; }
-.dash-title { margin: 0; font-size: 34px; font-weight: 800; }
-.dash-subtitle { margin: 6px 0 0; font-size: 14px; color: rgba(0,0,0,0.65); }
+.dash-hero {
+    background: var(--lavender);
+    padding: 34px 18px 64px;
+    text-align: center;
+}
+
+.dash-title {
+    margin: 0;
+    font-size: 34px;
+    font-weight: 800;
+}
+
+.dash-subtitle {
+    margin: 6px 0 0;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.65);
+}
 
 /* Stats */
-.stats { max-width: 980px; margin: -42px auto 28px; padding: 0 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-.stat-card { background: var(--card-bg); border-radius: 22px; box-shadow: var(--shadow-sm); padding: 16px 22px; min-height: 92px; display: flex; flex-direction: column; justify-content: center; }
-.stat-label { font-size: 14px; color: rgba(0,0,0,0.7); margin-bottom: 6px; }
-.stat-row { display: flex; align-items: baseline; gap: 12px; }
-.stat-value { font-size: 46px; line-height: 1; font-weight: 800; }
-.stat-title { font-size: 20px; line-height: 1; font-weight: 800; margin-bottom: 6px; }
-.stat-unit { font-size: 12px; color: rgba(0,0,0,0.7); }
-.rank-row { display: flex; align-items: baseline; justify-content: center; gap: 6px; }
-.rank-value { font-size: 46px; line-height: 1; font-weight: 800; }
+.stats {
+    max-width: 980px;
+    margin: -42px auto 28px;
+    padding: 0 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
 
-@media (max-width: 900px){ .stats { grid-template-columns: 1fr; margin-top: -36px; } }
+.stat-card {
+    background: var(--card-bg);
+    border-radius: 22px;
+    box-shadow: var(--shadow-sm);
+    padding: 24px 28px; /* You might want to slightly bump up the padding so it doesn't hug the top too tightly */
+    min-height: 92px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* <--- Changed from center */
+}
+
+.stat-label {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 6px;
+}
+
+.stat-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.stat-value {
+    font-size: 46px;
+    line-height: 1;
+    font-weight: 800;
+}
+
+.stat-title {
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.stat-unit {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.rank-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
+}
+
+.rank-value {
+    font-size: 46px;
+    line-height: 1;
+    font-weight: 800;
+}
+
+@media (max-width: 900px) {
+    .stats {
+        grid-template-columns: 1fr;
+        margin-top: -36px;
+    }
+}
 
 /* WTForms Form styling */
-.dash form { max-width: 980px; margin: 0 auto 48px; padding: 18px 22px; background: var(--card-bg); border-radius: 22px; box-shadow: var(--shadow-sm); }
-.dash form p { margin: 0 0 14px; }
-.dash form label { display: inline-block; margin: 0 0 8px; font-size: 14px; font-weight: 700; color: rgba(0,0,0,0.72); }
-.dash form select {
-  width: 100%; padding: 12px 14px; border-radius: 14px; border: 1px solid rgba(0,0,0,0.14);
-  background: #fff; font-size: 14px; outline: none; appearance: none;
-  background-image: linear-gradient(45deg, transparent 50%, rgba(0,0,0,0.55) 50%), linear-gradient(135deg, rgba(0,0,0,0.55) 50%, transparent 50%);
-  background-position: calc(100% - 18px) 55%, calc(100% - 12px) 55%; background-size: 6px 6px, 6px 6px; background-repeat: no-repeat;
+.dash form {
+    max-width: 980px;
+    margin: 0 auto 48px;
+    padding: 18px 22px;
+    background: var(--card-bg);
+    border-radius: 22px;
+    box-shadow: var(--shadow-sm);
 }
-.dash form input[type="submit"] { width: 100%; border: 0; border-radius: 16px; padding: 12px 16px; font-weight: 800; background: var(--lavender); color: var(--text-main); cursor: pointer; transition: transform 120ms ease; }
-.dash form input[type="submit"]:hover { filter: brightness(0.98); transform: translateY(-1px); }
+
+.dash form p {
+    margin: 0 0 14px;
+}
+
+.dash form label {
+    display: inline-block;
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.72);
+}
+
+.dash form select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    background: #fff;
+    font-size: 14px;
+    outline: none;
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, rgba(0, 0, 0, 0.55) 50%), linear-gradient(135deg, rgba(0, 0, 0, 0.55) 50%, transparent 50%);
+    background-position: calc(100% - 18px) 55%, calc(100% - 12px) 55%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+}
+
+.dash form input[type="submit"] {
+    width: 100%;
+    border: 0;
+    border-radius: 16px;
+    padding: 12px 16px;
+    font-weight: 800;
+    background: var(--lavender);
+    color: var(--text-main);
+    cursor: pointer;
+    transition: transform 120ms ease;
+}
+
+.dash form input[type="submit"]:hover {
+    filter: brightness(0.98);
+    transform: translateY(-1px);
+}
 
 /* Leaderboard */
-.leaderboard { max-width: 720px; margin: -40px auto 40px; background: var(--card-bg); border-radius: 22px; box-shadow: var(--shadow-sm); overflow: hidden; }
-.leaderboard-head, .leaderboard-row { display: grid; grid-template-columns: 60px 1fr 120px; padding: 14px 18px; }
-.leaderboard-head { font-weight: 800; font-size: 14px; background: rgba(0,0,0,0.04); }
-.leaderboard-row { border-top: 1px solid rgba(0,0,0,0.06); font-size: 15px; }
-.leaderboard-row:hover { background: rgba(0,0,0,0.03); }
+.leaderboard {
+    max-width: 720px;
+    margin: -40px auto 40px;
+    background: var(--card-bg);
+    border-radius: 22px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.leaderboard-head, .leaderboard-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 120px;
+    padding: 14px 18px;
+}
+
+.leaderboard-head {
+    font-weight: 800;
+    font-size: 14px;
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.leaderboard-row {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    font-size: 15px;
+}
+
+.leaderboard-row:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.first-place {
+  font-weight: 800;
+}
+
+/* =========================
+   Dashboard Lists (Index)
+   ========================= */
+.history-list, .freq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+/* Last 7 Meals Item */
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    background: var(--bg-page);
+    border-radius: 12px;
+}
+
+.history-ingredients {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.ing-tag {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: #e2e2e2;
+    color: var(--text-main);
+    text-transform: capitalize; /* Automatically capitalizes 'beef', 'pasta', etc. */
+}
+
+/* NEW: High Impact (Red) */
+.ing-tag--high {
+    background: #ffdbdb;
+    color: #b30000;
+}
+
+/* NEW: Very Low Impact (Green) */
+.ing-tag--low {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.history-emission {
+    font-weight: 500; /* Changed from 700 so it defaults to normal text */
+    color: var(--blue-dark);
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+/* NEW: Bold styling for high impact meals */
+.history-emission--high {
+    font-weight: 800; /* Extra bold */
+}
+
+/* Protein Frequency Item */
+.freq-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 6px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.freq-item:last-child {
+    border-bottom: none;
+}
+
+.freq-name {
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 15px;
+}
+
+.freq-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    min-width: 38px;
+    height: 28px;
+    border-radius: 14px;
+
+    background: var(--lavender);
+    color: var(--blue-dark);
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.history-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.history-date {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.freq-name--high {
+  color: #b30000;
+}
