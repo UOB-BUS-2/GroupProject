@@ -10,38 +10,40 @@ from app.models import User
 from app import db
 import sqlalchemy as sa
 
+
 class LogMeal(FlaskForm):
     # Maybe added later
-    #meal_of_day = SelectField("Log a meal", validators=[DataRequired()], choices = [('breakfast', 'Breakfast'), ('lunch', 'Lunch'), ('dinner', 'Dinner'), ('snack', 'Snack')])
-    protein_selected = SelectField("What was your main source of protein", validators=[DataRequired('Please make a selection')],default = None,
-                                         choices=[("None", '--- Select Protein ---'),
-                                                  ('beef', 'Beef'),
-                                                  ("lamb", "Lamb"),
-                                                  ('chicken', 'Chicken'),
-                                                  ("turkey", "Turkey"),
-                                                  ("pork", "Pork"),
-                                                  ('fish', 'Farmed fish'),
-                                                  ("wild_fish", "Wild fish"),
-                                                  ("shrimp", "Shrimp"),
-                                                  ('eggs', 'Eggs'),
-                                                  ('tofu', 'Tofu'),
-                                                  ("lentils", "Lentils"),
-                                                  ("chickpeas", "Chickpeas"),
-                                                  ("beans", "Beans")])
-    carb_selected = SelectField("What was your main carbohydrate", validators=[DataRequired()],default = None,
-                                         choices=[("None", '--- Select Carbohydrate ---'),
-                                                  ('bread', 'Bread'),
-                                                  ('rice', 'Rice'),
-                                                  ('potato', 'Potato'),
-                                                  ('pasta', 'Pasta'),
-                                                  ("oats", "Oats")])
-    veg_selected = SelectField("What was your main vegetable", validators=[DataRequired()], default = None,
-                                         choices=[("None", '--- Select Vegetable ---'),
-                                                  ('carrot', 'Carrot'),
-                                                  ('broccoli', 'Broccoli'),
-                                                  ('tomato', 'Tomato'),
-                                                  ('onion', 'Onion'),
-                                                  ("avocado", "Avocado")])
+    # meal_of_day = SelectField("Log a meal", validators=[DataRequired()], choices = [('breakfast', 'Breakfast'), ('lunch', 'Lunch'), ('dinner', 'Dinner'), ('snack', 'Snack')])
+    protein_selected = SelectField("What was your main source of protein?",
+                                   validators=[DataRequired('Please make a selection')], default=None,
+                                   choices=[("None", '--- Select Protein ---'),
+                                            ('beef', 'Beef'),
+                                            ("lamb", "Lamb"),
+                                            ('chicken', 'Chicken'),
+                                            ("turkey", "Turkey"),
+                                            ("pork", "Pork"),
+                                            ('fish', 'Farmed fish'),
+                                            ("wild_fish", "Wild fish"),
+                                            ("shrimp", "Shrimp"),
+                                            ('eggs', 'Eggs'),
+                                            ('tofu', 'Tofu'),
+                                            ("lentils", "Lentils"),
+                                            ("chickpeas", "Chickpeas"),
+                                            ("beans", "Beans")])
+    carb_selected = SelectField("What was your main carbohydrate?", validators=[DataRequired()], default=None,
+                                choices=[("None", '--- Select Carbohydrate ---'),
+                                         ('bread', 'Bread'),
+                                         ('rice', 'Rice'),
+                                         ('potato', 'Potato'),
+                                         ('pasta', 'Pasta'),
+                                         ("oats", "Oats")])
+    veg_selected = SelectField("What was your main vegetable?", validators=[DataRequired()], default=None,
+                               choices=[("None", '--- Select Vegetable ---'),
+                                        ('carrot', 'Carrot'),
+                                        ('broccoli', 'Broccoli'),
+                                        ('tomato', 'Tomato'),
+                                        ('onion', 'Onion'),
+                                        ("avocado", "Avocado")])
     # Maybe added later
     # date_completed = DateField(
     #     "When did you have this?",

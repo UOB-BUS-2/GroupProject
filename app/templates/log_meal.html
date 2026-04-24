@@ -3,7 +3,7 @@
 {% block title %}Log a meal{% endblock %}
 
 {% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/log_meal.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/page_style.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -14,8 +14,7 @@
         <p class="dash-subtitle">Log a meal below!</p>
     </section>
 
-    <!-- Stat cards -->
-    <section class="stats">
+<section class="stats">
         <div class="stat-card">
             <div class="stat-label">Total GHG emissions</div>
             <div class="stat-row">
@@ -24,10 +23,10 @@
             </div>
         </div>
 
-        <div class="stat-card stat-card--right">
+        <div class="stat-card">
             <div class="stat-label">Leaderboard Ranking</div>
-            <div class="rank-row">
-                <div class="rank-value">{{ rank if rank else 0 }}</div>
+            <div class="stat-row">
+                <div class="stat-value">{{ rank if rank else 0 }}</div>
             </div>
         </div>
     </section>
@@ -39,11 +38,11 @@
         </p>
         <p> {{ form.carb_selected.label }} <br>
             {{ form.carb_selected }} <br>
-        <p>
+        </p>
         <p> {{ form.veg_selected.label }} <br>
             {{ form.veg_selected }} <br>
         </p>
-        <p> {{ form.submit.label }}
+        <p>
             {{ form.submit }} <br>
         </p>
     </form>

@@ -6,27 +6,17 @@
 }
 
 :root {
-    /* Colors */
     --bg-main: #ffffff;
     --bg-page: #eef1f1;
     --lavender: #cfd5ff;
     --blue-primary: #0b3dff;
     --blue-dark: #0013b8;
-
-    /* Text */
     --text-main: #111111;
     --text-muted: #7a7a7a;
     --text-nav: #9a9a9a;
-
-    /* UI Elements */
     --card-bg: #ffffff;
     --shadow-sm: 0 8px 18px rgba(0, 0, 0, 0.06);
-    --placeholder: #d9d9d9;
-    --gray-box: #d8d8d8;
-
-    /* Layout */
     --container-max: 1120px;
-    --radius-lg: 48px;
 }
 
 body {
@@ -36,18 +26,9 @@ body {
     color: var(--text-main);
 }
 
-::selection {
-    background: rgba(205, 211, 255, 0.6);
-}
-
 /* =========================
    2. SHARED NAVIGATION
    ========================= */
-.nav {
-    width: 100%;
-    background: transparent;
-}
-
 .nav-inner {
     max-width: var(--container-max);
     margin: 0 auto;
@@ -62,33 +43,32 @@ body {
     color: var(--text-main);
     font-weight: 700;
     font-size: 22px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: var(--lavender);
+    transition: filter 0.2s;
 }
+
+.nav-brand a:hover { filter: brightness(0.95); }
 
 .nav-links {
     list-style: none;
     display: flex;
     align-items: center;
     gap: 42px;
-    margin: 0;
-    padding: 0;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--text-nav);
     font-weight: 500;
-    font-size: 16px;
 }
 
-.nav-links a:hover {
-    color: var(--text-main);
-}
+.nav-links a:hover { color: var(--text-main); }
 
 .nav-cta {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 18px;
+    padding: 10px 20px;
     border-radius: 999px;
     background: var(--lavender);
     color: var(--text-main) !important;
@@ -96,51 +76,22 @@ body {
     text-decoration: none;
 }
 
-.nav-cta:hover {
-    filter: brightness(0.97);
-}
-
-@media (max-width: 900px) {
-    .nav-links {
-        gap: 22px;
-    }
+.nav-link--disabled {
+    background: #e2e8f0 !important;
+    color: var(--text-nav) !important;
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 /* =========================
-   3. HOME REDIRECT COMPONENTS
+   3. DROPDOWN SYSTEM
    ========================= */
-.analysis-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-}
-
-.gauge-wrapper {
-    margin: 30px auto;
-    max-width: 400px;
-}
-
-.responsive-gauge {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-blockquote {
-    font-style: italic;
-    background: #f9f9f9;
-    padding: 15px;
-    border-left: 5px solid #2ecc71;
-}
-
-/* Container for the dropdown */
 .nav-user-dropdown {
     position: relative;
     display: inline-block;
 }
 
-/* The button/trigger styling */
 .dropdown-trigger {
     background: none;
     border: none;
@@ -151,12 +102,9 @@ blockquote {
     font-family: inherit;
 }
 
-/* The hidden menu */
 .dropdown-content {
-    /* Replace 'display: none' with these two */
     visibility: hidden;
     opacity: 0;
-
     position: absolute;
     right: 0;
     top: 100%;
@@ -166,22 +114,16 @@ blockquote {
     border-radius: 12px;
     padding: 12px 0;
     z-index: 100;
-    border: 1px solid rgba(0,0,0,0.05);
-
-    /* THE DELAY LOGIC:
-       Wait 1s before hiding visibility, and take 0.3s to fade out opacity after a 3s wait. */
-    transition: visibility 0s linear 1s, opacity 0.1s linear 1s;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: visibility 0s linear 1s, opacity 0.2s linear 1s;
 }
 
-/* Show the menu on hover */
 .nav-user-dropdown:hover .dropdown-content {
     visibility: visible;
     opacity: 1;
-    /* When we start hovering, we want it to show INSTANTLY (0s delay) */
     transition-delay: 0s;
 }
 
-/* We can keep the bridge just for extra safety, but it's less critical now */
 .nav-user-dropdown::after {
     content: "";
     position: absolute;
@@ -189,36 +131,31 @@ blockquote {
     left: 0;
     width: 100%;
     height: 15px;
-    display: block;
 }
 
-/* --- Inside the dropdown styling --- */
 .dropdown-content .user-info {
     display: block;
-    padding: 8px 16px;
-    font-size: 12px;
+    padding: 12px 16px;
+    font-size: 14px;
     color: var(--text-muted);
-}
-
-.dropdown-content hr {
-    border: 0;
-    border-top: 1px solid rgba(0,0,0,0.06);
-    margin: 8px 0;
+    text-align: center;
 }
 
 .dropdown-content a {
     display: block;
-    padding: 8px 16px;
+    padding: 10px 16px;
     text-decoration: none;
     color: var(--text-main) !important;
     font-size: 14px;
     font-weight: 600;
 }
 
-.dropdown-content a:hover {
-    background-color: var(--bg-page);
-}
+.dropdown-content a:hover { background-color: var(--bg-page); }
 
-.logout-link {
+.dropdown-content a.logout-link {
+    margin-top: 8px;
+    padding: 14px 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
     color: #b30000 !important;
+    text-align: center;
 }

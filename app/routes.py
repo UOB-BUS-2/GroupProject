@@ -1,5 +1,8 @@
+import datetime
 import os
 import random
+
+from datetime import datetime, timedelta
 
 from app import app, db
 from flask import render_template, current_app, redirect, url_for, flash, request
@@ -13,30 +16,52 @@ from urllib.parse import urlsplit
 
 
 @app.route("/", methods=["GET", "POST"])
-#@login_required
+# @login_required
 def index():
     if current_user.is_authenticated:
+        # defining the last 7 days cutoff for dashboard display of meals
+        seven_days_ago = datetime.now().date() - timedelta(days=7)
+        # retrieve the meals logged in last 7 days
+        weekly_meals = [m for m in current_user.meals if m.date_added >= seven_days_ago]
+        # sorting the meals to display, newest at the top
+        display_meals = weekly_meals[::-1]
+        # i've kept this in but currently not using
         last_7_meals = current_user.meals[-7:][::-1]
         protein_count = {}
         weekly_total = 0
-        for meal in last_7_meals:
+        # swapped to using weekly meals, not just the last 7
+        for meal in weekly_meals:
             weekly_total += meal.total_emissions
-            if meal.protein not in protein_count:
-                protein_count[meal.protein] = 1
-            else:
-                protein_count[meal.protein] += 1
+            # tally protein foods for the 'In the last week you had' card
+            protein_count[meal.protein] = protein_count.get(meal.protein, 0) + 1
 
         sorted_protein_count = dict(
             sorted(protein_count.items(), key=lambda item: item[1],
                    reverse=True))  # just so it lists the protein count in the 'in the last week you had' in order of quantity (desc)
+        # comparison logic, comparing to average person per number of meals
+        num_meals = len(weekly_meals)
+        comparison_delta = 0
+        comparison_label = "lower"  # Default
+
+        if num_meals > 0:
+            # assuming avg person: 39kg/week for 21 meals
+            expected = num_meals * (39.0 / 21)
+            raw_percent = (weekly_total / expected) * 100
+
+            # Calculate the difference from the 100% baseline
+            comparison_delta = int(abs(100 - raw_percent))
+            comparison_label = "higher" if raw_percent > 100 else "lower"
+
         return render_template("index.html",
-                               last_7_meals=last_7_meals,
+                               last_7_meals=display_meals,
                                protein_count=sorted_protein_count,
-                               user_name=current_user.username, weekly_total=weekly_total)
+                               weekly_total=weekly_total,
+                               num_meals=num_meals,
+                               comparison_delta=comparison_delta,
+                               comparison_label=comparison_label,
+                               user_name=current_user.username)
     else:
-        return render_template("LandingPage.html",
-                               title="Welcome to FoodApp",
-                               headline="Building a Sustainable Future")
+        return render_template("LandingPage.html")
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -92,18 +117,34 @@ def logout():
 @app.route("/log_meal", methods=["GET", "POST"])
 @login_required
 def log_meal():
-    leaderboard = current_user.get_leaderboard()
-    for i in leaderboard:
-        if i[1] == current_user.username:
-            rank = leaderboard.index(i) + 1
+    seven_days_ago = datetime.now().date() - timedelta(days=7)
 
-    emissions = current_user.weekly_score
+    # calc the rolling score for every user to find out current rank
+    all_users = User.query.all()
+    user_scores = []
+    for u in all_users:
+        u_rolling_score = sum(m.total_emissions for m in u.meals if m.date_added >= seven_days_ago)
+        user_scores.append((u.username, u_rolling_score))
+
+    # sorting scores (ascending) to find rank
+    user_scores.sort(key=lambda x: x[1])
+
+    # calc current user's specific rolling score
+    emissions = sum(m.total_emissions for m in current_user.meals if m.date_added >= seven_days_ago)
+
+    # find ranking in leaderboard
+    rank = 0
+    for i, (name, score) in enumerate(user_scores):
+        if name == current_user.username:
+            rank = i + 1
+            break
 
     form = LogMeal()
     if form.validate_on_submit():
-        if form.carb_selected.data == "None" or form.protein_selected.data == "None" or form.veg_selected.data == "None":
+        if "None" in [form.carb_selected.data, form.protein_selected.data, form.veg_selected.data]:
             flash("You must select a food item from all 3 dropdown boxes.")
             return redirect(url_for("log_meal"))
+
         logged_meal = Meal(
             carb=form.carb_selected.data,
             protein=form.protein_selected.data,
@@ -111,7 +152,9 @@ def log_meal():
             user_id=current_user.id
         )
         logged_meal.calculate_emissions()
+
         current_user.weekly_score += logged_meal.total_emissions
+
         db.session.add(logged_meal)
         db.session.commit()
         return redirect(url_for('home_redirect', meal_id=logged_meal.id))
@@ -147,8 +190,16 @@ def home_redirect(meal_id):
 @app.route("/leaderboard")
 @login_required
 def leaderboard():
-    users = db.session.query(User.username, User.weekly_score) \
-        .order_by(User.weekly_score.asc()) \
-        .all()
+    seven_days_ago = datetime.now().date() - timedelta(days=7)
+    all_users = User.query.all()
 
-    return render_template('LeaderboardPage.html', usernames=users)
+    leaderboard_list = []
+    for user in all_users:
+        # only the meals in the last 7 days
+        rolling_total = sum(m.total_emissions for m in user.meals if m.date_added >= seven_days_ago)
+        leaderboard_list.append((user.username, rolling_total))
+
+    # sort leaderboard by lowest score first
+    leaderboard_list.sort(key=lambda x: x[1])
+
+    return render_template('LeaderboardPage.html', usernames=leaderboard_list)

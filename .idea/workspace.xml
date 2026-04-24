@@ -5,20 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa7a8f11-1997-4abc-8ebb-4c3eaa15bad7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/static/css/page_style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.db" beforeDir="false" afterPath="$PROJECT_DIR$/app.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/css/LandingPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/LandingPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/css/PastaPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/PastaPage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/css/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/auth.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/css/log_meal.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/log_meal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/css/log_meal.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/HomeRedirect.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/HomeRedirect.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/LandingPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/LandingPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/LeaderboardPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/LeaderboardPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/LoginPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/LoginPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/SignupPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/SignupPage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/log_meal.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/log_meal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/meals/PastaPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/PastaPage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
