@@ -35,7 +35,7 @@
             </p>
         </div>
         <div class="stat-card">
-            <div class="stat-title">Meals in the last week:</div>
+            <div class="stat-title">Your most recent meals:</div>
             <div class="history-list">
 
                 {# define impact categories based on standard GHG data #}
@@ -43,7 +43,7 @@
                 {% set low_impact = ['tofu', 'lentils', 'chickpeas', 'beans', 'bread', 'potato', 'pasta', 'oats',
                 'carrot', 'broccoli', 'tomato', 'onion'] %}
 
-                {% for meal in last_7_meals %}
+                {% for meal in meals_over_last_week[:7] %}
                 <div class="history-item">
 
                     <div class="history-left">

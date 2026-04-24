@@ -53,7 +53,7 @@ def index():
             comparison_label = "higher" if raw_percent > 100 else "lower"
 
         return render_template("index.html",
-                               last_7_meals=display_meals,
+                               meals_over_last_week=display_meals,
                                protein_count=sorted_protein_count,
                                weekly_total=weekly_total,
                                num_meals=num_meals,
