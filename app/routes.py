@@ -21,15 +21,19 @@ def index():
     if current_user.is_authenticated:
         # defining the last 7 days cutoff for dashboard display of meals
         seven_days_ago = datetime.now().date() - timedelta(days=7)
+
+
         # retrieve the meals logged in last 7 days
         weekly_meals = [m for m in current_user.meals if m.date_added >= seven_days_ago]
         # sorting the meals to display, newest at the top
-        display_meals = weekly_meals[::-1]
-        # i've kept this in but currently not using
-        last_7_meals = current_user.meals[-7:][::-1]
+        sorted_weekly_meals = sorted(weekly_meals, key=lambda x: x.id, reverse=True)
+
+        # tip will only look at the last 7 meals
+        tip_subset = sorted_weekly_meals[:7]
+        tip_proteins = [m.protein.lower() for m in tip_subset]
         protein_count = {}
         weekly_total = 0
-        # swapped to using weekly meals, not just the last 7
+        # tallying up the total emissions for the entire week
         for meal in weekly_meals:
             weekly_total += meal.total_emissions
             # tally protein foods for the 'In the last week you had' card
@@ -53,7 +57,8 @@ def index():
             comparison_label = "higher" if raw_percent > 100 else "lower"
 
         return render_template("index.html",
-                               meals_over_last_week=display_meals,
+                               meals_to_display=sorted_weekly_meals,
+                               tip_proteins = tip_proteins,
                                protein_count=sorted_protein_count,
                                weekly_total=weekly_total,
                                num_meals=num_meals,
