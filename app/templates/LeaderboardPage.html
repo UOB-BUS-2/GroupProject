@@ -22,12 +22,11 @@
             <div>Name</div>
             <div>Emissions (kg CO<sub>2</sub>e)</div>
         </div>
-
         {% for username, score in usernames %}
         <div class="leaderboard-row">
             <div>{{ loop.index }}</div>
 
-            <div class="{% if loop.first %}first-place{% endif %}">
+            <div class="{% if username == current_user.username %}current-user-highlight{% endif %}">
                 {{ username }}
             </div>
 

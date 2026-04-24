@@ -32,6 +32,13 @@ body {
     flex-direction: column;
 }
 
+/* Base styling for layout cards */
+.stats .stat-card {
+    text-align: center;
+    justify-content: center;
+    min-height: 140px;
+}
+
 /* Carbon Footprint Card - Full Width & Centered */
 .stat-card--full {
     grid-column: 1 / -1;
@@ -51,7 +58,7 @@ body {
 }
 
 .comparison-value {
-    font-size: 64px;
+    font-size: 48px;
     font-weight: 800;
     color: var(--text-main);
     line-height: 1;
@@ -64,11 +71,11 @@ body {
 }
 
 .text-red {
-    color: #b30000;
+    color: var(--text-danger);
 }
 
 .text-green {
-    color: #166534;
+    color: var(--text-success);
 }
 
 .stat-title {
@@ -83,7 +90,20 @@ body {
     color: var(--text-muted);
 }
 
-/* History & Frequency Lists */
+.stat-value {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.1;
+    display: block;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+/* history & freq lists */
 .history-list, .freq-list {
     display: flex;
     flex-direction: column;
@@ -128,19 +148,27 @@ body {
 }
 
 .ing-tag--high {
-    background: #ffdbdb;
-    color: #b30000;
+    background: var(--bg-danger);
+    color: var(--text-danger);
 }
 
 .ing-tag--low {
-    background: #dcfce7;
-    color: #166534;
+    background: var(--bg-success);
+    color: var(--text-success);
 }
 
 .history-emission {
     font-size: 14px;
     color: var(--blue-dark);
     font-weight: 600;
+}
+
+.freq-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px 0;
 }
 
 .freq-item {
@@ -153,7 +181,14 @@ body {
 
 .freq-name {
     font-weight: 600;
+    font-size: 16px;
     text-transform: capitalize;
+    color: var(--text-main);
+}
+
+
+.freq-item .freq-name--high {
+    color: var(--text-danger);
 }
 
 .freq-count {
@@ -187,13 +222,10 @@ body {
 
 .leaderboard-head, .leaderboard-row {
     display: grid;
-    /* Column 1: Rank (fixed)
-       Column 2: Name (flexible)
-       Column 3: Emissions (fixed wide enough for the unit) */
     grid-template-columns: 60px 1fr 180px;
     padding: 18px 24px;
     align-items: center;
-    gap: 15px; /* Adds a safety gap between columns */
+    gap: 15px;
 }
 
 .leaderboard-head {
@@ -208,31 +240,28 @@ body {
 .leaderboard-row div {
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* Adds ... if a name is somehow still too long */
+    text-overflow: ellipsis;
 }
 
 .leaderboard-row:hover {
     background: rgba(0, 0, 0, 0.02);
 }
 
-.first-place {
+.current-user-highlight {
     font-weight: 800;
     color: var(--blue-dark);
 }
 
-/* Specifically target the emissions column to keep it aligned right */
 .leaderboard-row div:last-child,
 .leaderboard-head div:last-child {
     text-align: right;
     font-weight: 700;
-    min-width: 150px; /* Stronger enforcement of the width */
+    min-width: 150px;
 }
 
 /* =========================
-   LOG MEAL FORM STYLES
+   log a meal form
    ========================= */
-
-/* Center the form and give it the card look */
 .dash form {
     max-width: 800px;
     margin: 40px auto;
@@ -255,7 +284,6 @@ body {
     color: var(--text-main);
 }
 
-/* Style the dropdown selects */
 .dash form select {
     width: 100%;
     padding: 12px 16px;
@@ -265,14 +293,13 @@ body {
     font-size: 16px;
     font-family: inherit;
     cursor: pointer;
-    appearance: none; /* Removes default arrow */
+    appearance: none;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 12px center;
     background-size: 16px;
 }
 
-/* Style the Submit button */
 .dash form input[type="submit"] {
     width: 100%;
     margin-top: 10px;
@@ -295,54 +322,9 @@ body {
     transform: scale(0.98);
 }
 
-/* Fix the two top cards (Emissions & Ranking) */
-.stats .stat-card {
-    text-align: center;
-    justify-content: center;
-    min-height: 140px;
-}
-
-.stat-value {
-    font-size: 48px;
-    font-weight: 800;
-    line-height: 1.1;
-    display: block;
-}
-
-.stat-label {
-    font-size: 14px;
-    color: var(--text-muted);
-    margin-bottom: 4px;
-}
-
-.freq-container {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    /* CHANGE THIS from center to flex-start */
-    justify-content: flex-start;
-    padding: 20px 0; /* Adds a nice gap between the title and the first item */
-}
-
-/* Update this in dashboard.css */
-
-.freq-name {
-    font-weight: 600;
-    font-size: 16px;
-    text-transform: capitalize;
-    color: var(--text-main); /* This might be overriding the red */
-}
-
-/* Add !important to force the red color */
-.freq-name--high {
-    color: #b30000 !important;
-}
-
 /* =========================
-   MEAL ANALYSIS PAGE
+   meal analysis
    ========================= */
-
-/* Background wrapper to keep things consistent */
 .analysis-page {
     background-color: var(--bg-page);
     min-height: 100vh;
@@ -365,7 +347,10 @@ body {
     margin-bottom: 30px;
 }
 
-/* Fix the giant image */
+.impact-header h1 strong {
+    color: var(--text-danger);
+}
+
 .gauge-wrapper {
     width: 100%;
     max-width: 480px;
@@ -396,8 +381,6 @@ body {
     padding-top: 30px;
 }
 
-/* Update these in dashboard.css */
-
 .action-tip h3 {
     font-size: 13px;
     font-weight: 700;
@@ -405,25 +388,19 @@ body {
     margin-bottom: 12px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    text-align: left; /* Ensures it stays left-aligned */
-}
-
-.tip-box blockquote {
-    margin: 0; /* Removes the default indentation */
-    font-style: italic;
-    color: var(--text-main);
-    line-height: 1.5;
+    text-align: left;
 }
 
 .tip-box {
     background: var(--bg-page);
     padding: 20px;
     border-radius: 16px;
-    /* Change this line */
     border-left: none;
 }
 
-/* Optional: Color-coded impact levels */
-.impact-header h1 strong {
-    color: #b30000; /* Red for high impact */
+.tip-box blockquote {
+    margin: 0;
+    font-style: italic;
+    color: var(--text-main);
+    line-height: 1.5;
 }

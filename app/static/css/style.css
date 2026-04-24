@@ -1,5 +1,5 @@
 /* =========================
-   1. GLOBAL RESETS & VARS
+   GLOBAL RESETS & VARS
    ========================= */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -17,6 +17,12 @@
     --card-bg: #ffffff;
     --shadow-sm: 0 8px 18px rgba(0, 0, 0, 0.06);
     --container-max: 1120px;
+
+
+    --text-danger: #b30000;
+    --bg-danger: #ffdbdb;
+    --text-success: #166534;
+    --bg-success: #dcfce7;
 }
 
 body {
@@ -27,7 +33,7 @@ body {
 }
 
 /* =========================
-   2. SHARED NAVIGATION
+   navigation (shared) styles
    ========================= */
 .nav-inner {
     max-width: var(--container-max);
@@ -89,7 +95,7 @@ body {
 }
 
 /* =========================
-   3. DROPDOWN SYSTEM
+   dropdown menu (sign out when hovering over username)
    ========================= */
 .nav-user-dropdown {
     position: relative;
@@ -162,6 +168,34 @@ body {
     margin-top: 8px;
     padding: 14px 16px;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
-    color: #b30000 !important;
+    color: var(--text-danger) !important;
     text-align: center;
+}
+
+/* =========================
+   flash messages
+   ========================= */
+.flash-container {
+    max-width: var(--container-max);
+    margin: 20px auto 0;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.flash-message {
+    background-color: var(--bg-danger);
+    color: var(--text-danger);
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    animation: slideDown 0.3s ease-out forwards;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }

@@ -49,10 +49,15 @@ def index():
 
         if num_meals > 0:
             # assuming avg person: 39kg/week for 21 meals
-            expected = num_meals * (39.0 / 21)
-            raw_percent = (weekly_total / expected) * 100
+            user_avg_meal = weekly_total / num_meals
 
-            # Calculate the difference from the 100% baseline
+            # global average for a main meal (39kg / 14 meals)
+            global_avg_meal = 2.78
+
+            # compare the two averages
+            raw_percent = (user_avg_meal / global_avg_meal) * 100
+
+            # calc the difference
             comparison_delta = int(abs(100 - raw_percent))
             comparison_label = "higher" if raw_percent > 100 else "lower"
 
@@ -170,20 +175,23 @@ def log_meal():
                            emissions=emissions,
                            user_name=current_user.username)
 
-
-@app.route("/home_redirect/<meal_id>", methods=["GET", "POST"])
+#don't need POST method here
+@app.route("/home_redirect/<meal_id>", methods=["GET"])
 def home_redirect(meal_id):
-    logged_meal = Meal.query.get(meal_id)
-
+    # get meal more safely or return 404 error if doesn't exist
+    logged_meal = db.session.get(Meal, meal_id)
+    if logged_meal is None:
+        abort(404)
     total_emissions = logged_meal.total_emissions
     qualitative_impact = logged_meal.get_qualitative_impact()
     car_miles = logged_meal.calculate_equivalent_miles()
 
+
     file_path = os.path.join(current_app.root_path, "static", "generic_tips.txt")
-    random_line = random.randint(0, 29)
+    # random_line = random.randint(0, 29)
     with open(file_path, "r") as file:
         tips = file.readlines()
-    generic_tip = tips[random_line]
+    generic_tip = random.choice(tips)
 
     return render_template("HomeRedirect.html",
                            total_emissions=total_emissions,
