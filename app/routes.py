@@ -216,3 +216,8 @@ def leaderboard():
     leaderboard_list.sort(key=lambda x: x[1])
 
     return render_template('LeaderboardPage.html', usernames=leaderboard_list)
+
+
+@app.route("/about")
+def about():
+    return render_template("About_Page.html")

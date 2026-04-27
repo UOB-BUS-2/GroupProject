@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}About FoodPrint{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/about_page.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<main class="about-page">
+
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <img src="{{ url_for('static', filename='images/FoodPrint_logo.png') }}"
+                 alt="FoodPrint logo"
+                 class="about-logo">
+
+            <h1>About FoodPrint</h1>
+
+            <p>
+                FoodPrint helps people understand and reduce the environmental impact of their meals.
+                Our goal is to make sustainable food choices simple, rewarding, and easy to track.
+            </p>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="about-card">
+            <h2>Our Mission</h2>
+            <p>
+                Food choices have a real impact on the planet. FoodPrint gives users a simple way to
+                log meals, view their estimated carbon footprint, and discover opportunities to make
+                lower-impact choices over time. It is our belief that
+                applications such as ours are necessary to help transition
+                into a low-carbon society in the UK and beyond.
+            </p>
+        </div>
+
+        <div class="about-card">
+            <h2>What FoodPrint Does</h2>
+            <ul>
+                <li>Track meals and estimate food-related emissions.</li>
+                <li>Allow users to compete with each other on our
+                    sustainability leaderboard.</li>
+                <li>Encourage lower-impact food choices with tips and
+                    tricks specific to you</li>
+            </ul>
+        </div>
+
+        <div class="about-card">
+            <h2>Why It Matters</h2>
+            <p>
+                Small changes can add up. By helping users understand the impact of everyday meals,
+                FoodPrint supports more informed decisions and encourages long-term sustainable habits.
+            </p>
+        </div>
+    </section>
+
+</main>
+
+{% endblock %}
