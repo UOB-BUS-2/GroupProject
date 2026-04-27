@@ -14,6 +14,13 @@
     <section class="hero">
 
         <div class="hero-content">
+
+            <img
+                    src="{{ url_for('static', filename='images/FoodPrint_logo.png') }}"
+         alt="FoodPrint logo"
+         class="hero-logo">
+
+
             <h1>
                 {{ headline if headline else "Building a Sustainable Future" }}
             </h1>
@@ -24,6 +31,10 @@
                 choices simple and rewarding." }}
             </p>
 
+
+            <a href="{{ url_for('login') }}" class="cta-btn">
+            Get Started
+           </a>
             {% if cta_url and cta_text %}
             <a href="" class="cta-btn">
                 {{ cta_text }}
