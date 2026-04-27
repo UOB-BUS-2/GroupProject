@@ -22,7 +22,6 @@ def index():
         # defining the last 7 days cutoff for dashboard display of meals
         seven_days_ago = datetime.now().date() - timedelta(days=7)
 
-
         # retrieve the meals logged in last 7 days
         weekly_meals = [m for m in current_user.meals if m.date_added >= seven_days_ago]
         # sorting the meals to display, newest at the top
@@ -63,7 +62,7 @@ def index():
 
         return render_template("index.html",
                                meals_to_display=sorted_weekly_meals,
-                               tip_proteins = tip_proteins,
+                               tip_proteins=tip_proteins,
                                protein_count=sorted_protein_count,
                                weekly_total=weekly_total,
                                num_meals=num_meals,
@@ -86,7 +85,8 @@ def signup():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash('Congratulations, you are now a registered user!')
+        #success category for flash message if successful registration
+        flash('Congratulations, you are now a registered user!', 'success')
         return redirect(url_for('login'))
 
     return render_template('SignupPage.html', title='Register', form=form)
@@ -175,17 +175,17 @@ def log_meal():
                            emissions=emissions,
                            user_name=current_user.username)
 
-#don't need POST method here
+
+# don't need POST method here
 @app.route("/home_redirect/<meal_id>", methods=["GET"])
 def home_redirect(meal_id):
     # get meal more safely or return 404 error if doesn't exist
     logged_meal = db.session.get(Meal, meal_id)
     if logged_meal is None:
-        abort(404)
+        os.abort(404)
     total_emissions = logged_meal.total_emissions
     qualitative_impact = logged_meal.get_qualitative_impact()
     car_miles = logged_meal.calculate_equivalent_miles()
-
 
     file_path = os.path.join(current_app.root_path, "static", "generic_tips.txt")
     # random_line = random.randint(0, 29)

@@ -1,10 +1,10 @@
 
 body {
-    background: #f0fdf4;  /* very light green background */
+    background: #f0fdf4;
 }
 
 .dash-hero {
-    background: #bbf7d0;  /* pastel green */
+    background: #bbf7d0;
     padding: 40px 20px 70px;
     text-align: center;
 }
@@ -13,7 +13,7 @@ body {
     margin: 0;
     font-size: 38px;
     font-weight: 800;
-    color: #14532d; /* dark green */
+    color: #14532d;
 }
 
 .stats {
@@ -45,7 +45,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ecfdf5; /* subtle green tint */
+    background-color: #ecfdf5;
     text-align: center;
 }
 
@@ -114,7 +114,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 14px;
-    background: #f0fdf4;  /* light green */
+    background: #f0fdf4;
     border-radius: 12px;
 }
 
@@ -142,7 +142,7 @@ body {
     font-weight: 700;
     padding: 4px 10px;
     border-radius: 6px;
-    background: #dcfce7;  /* green tag */
+    background: #dcfce7;
     color: #14532d;
     text-transform: capitalize;
 }
@@ -191,7 +191,7 @@ body {
 }
 
 .freq-count {
-    background: #bbf7d0;  /* pastel green */
+    background: #bbf7d0;
     color: #14532d;
     padding: 4px 12px;
     border-radius: 99px;
@@ -204,8 +204,6 @@ body {
         grid-template-columns: 1fr;
     }
 }
-
-/* Leaderboard */
 
 .leaderboard {
     max-width: 800px;
@@ -229,7 +227,7 @@ body {
 .leaderboard-head {
     font-weight: 800;
     font-size: 14px;
-    background: #ecfdf5;  /* subtle green */
+    background: #ecfdf5;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -250,8 +248,6 @@ body {
     font-weight: 700;
     min-width: 150px;
 }
-
-/* Form */
 
 .dash form {
     max-width: 800px;
@@ -281,7 +277,6 @@ body {
     transform: translateY(-1px);
 }
 
-/* Analysis */
 
 .analysis-page {
     background-color: #f0fdf4;
@@ -309,50 +304,12 @@ body {
     border-radius: 16px;
 }
 
-/* =========================
-
-body {
-    background: var(--bg-page);
-}
-
-.dash-hero {
-    background: var(--lavender);
-    padding: 40px 20px 70px;
-    text-align: center;
-}
-
-.dash-title {
-    margin: 0;
-    font-size: 38px;
-    font-weight: 800;
-}
-
-.stats {
-    max-width: 1000px;
-    margin: -40px auto 30px;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-}
-
-.stat-card {
-    background: var(--card-bg);
-    border-radius: 24px;
-    box-shadow: var(--shadow-sm);
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Base styling for layout cards */
 .stats .stat-card {
     text-align: center;
     justify-content: center;
     min-height: 140px;
 }
 
-/* Carbon Footprint Card - Full Width & Centered */
 .stat-card--full {
     grid-column: 1 / -1;
     display: flex;
@@ -416,7 +373,6 @@ body {
     margin-bottom: 4px;
 }
 
-/* history & freq lists */
 .history-list, .freq-list {
     display: flex;
     flex-direction: column;
@@ -519,9 +475,7 @@ body {
     }
 }
 
-/* =========================
-   LEADERBOARD STYLES
-   ========================= */
+
 .leaderboard {
     max-width: 800px;
     margin: -40px auto 40px;
@@ -572,9 +526,6 @@ body {
     min-width: 150px;
 }
 
-/* =========================
-   log a meal form
-   ========================= */
 .dash form {
     max-width: 800px;
     margin: 40px auto;
@@ -619,10 +570,10 @@ body {
     padding: 14px;
     border-radius: 12px;
 
-    background: #bbf7d0;        /* pastel green */
-    color: #14532d;             /* dark green text */
+    background: #bbf7d0;
+    color: #14532d;
 
-    border: 1px solid #86efac;  /* subtle border */
+    border: 1px solid #86efac;
 
     font-size: 18px;
     font-weight: 800;
@@ -638,34 +589,10 @@ body {
     box-shadow: 0 6px 16px rgba(22, 163, 74, 0.2);
 }
 
-/*
-.dash form input[type="submit"] {
-    width: 100%;
-    margin-top: 10px;
-    padding: 14px;
-    border: none;
-    border-radius: 12px;
-    background: var(--lavender);
-    color: var(--text-main);
-    font-size: 18px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: filter 0.2s, transform 0.1s;
-}
-*/
-
-/*
-.dash form input[type="submit"]:hover {
-    filter: brightness(0.95);
-}
-*/
 .dash form input[type="submit"]:active {
     transform: scale(0.98);
 }
 
-/* =========================
-   meal analysis
-   ========================= */
 .analysis-page {
     background-color: var(--bg-page);
     min-height: 100vh;
@@ -715,7 +642,6 @@ body {
     color: var(--blue-dark);
 }
 
-/* Action Tip Box */
 .action-tip {
     text-align: left;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
@@ -745,7 +671,3 @@ body {
     color: var(--text-main);
     line-height: 1.5;
 }
-
-
-
-   ========================= */
