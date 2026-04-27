@@ -1,0 +1,814 @@
+============================================================
+Commit: 64e1e1f512288d4f1e2e6609a39350b8292224cd
+Author: George Edward Gudgeon <geg963@outlook.com>
+Author date: 2026-04-28 00:05:24 +0100
+Committer: George Edward Gudgeon <geg963@outlook.com>
+Committer date: 2026-04-28 00:05:24 +0100
+
+Message:
+Reviewed css, deleted redundant/clashing rules, changed successful registration highlighting from red to green, as the red suggested failure. Small bug in routes removed, missing an os import for abort if logged_meal is None
+
+Changed project files:
+6	6	app/routes.py
+6	101	app/static/css/LandingPage.css
+0	3	app/static/css/about_page.css
+8	100	app/static/css/auth.css
+13	91	app/static/css/page_style.css
+21	51	app/static/css/style.css
+4	2	app/templates/About_Page.html
+4	4	app/templates/LandingPage.html
+3	3	app/templates/base.html
+1	1	app/templates/index.html
+
+============================================================
+Commit: 46cab9c5691956064b0013bceffad0466208bfa6
+Author: Anthony Okeke <acokeke14@gmail.com>
+Author date: 2026-04-27 21:30:00 +0100
+Committer: Anthony Okeke <acokeke14@gmail.com>
+Committer date: 2026-04-27 21:30:00 +0100
+
+Message:
+changed tab name on landing page to FoodPrint from FoodApp
+
+Changed project files:
+1	1	app/templates/LandingPage.html
+
+============================================================
+Commit: b766e7a1b24fa02ccb8ee60b2c2297528578cefe
+Author: Anthony Okeke <acokeke14@gmail.com>
+Author date: 2026-04-27 21:27:04 +0100
+Committer: Anthony Okeke <acokeke14@gmail.com>
+Committer date: 2026-04-27 21:27:04 +0100
+
+Message:
+Added an about us page. CSS, HTML, and route
+
+Changed project files:
+5	0	app/routes.py
+108	0	app/static/css/about_page.css
+63	0	app/templates/About_Page.html
+1	0	app/templates/base.html
+
+============================================================
+Commit: 9ffc17341c0e32fe8d885776312b9cc774a01165
+Author: Anthony Okeke <acokeke14@gmail.com>
+Author date: 2026-04-27 20:32:16 +0100
+Committer: Anthony Okeke <acokeke14@gmail.com>
+Committer date: 2026-04-27 20:32:16 +0100
+
+Message:
+changed the styling of the pages to match the homepage and logo. also cleaned up the authentication pages
+
+Changed project files:
+111	1	app/static/css/auth.css
+347	2	app/static/css/page_style.css
+46	2	app/static/css/style.css
+
+============================================================
+Commit: 99e209fa7c249c0565f70d356aa1a41f4d2c7821
+Author: Anthony Okeke <acokeke14@gmail.com>
+Author date: 2026-04-27 18:48:30 +0100
+Committer: Anthony Okeke <acokeke14@gmail.com>
+Committer date: 2026-04-27 18:48:30 +0100
+
+Message:
+Added logo and reformatted Landing Page. Made both HTML and CSS changes
+
+Changed project files:
+99	1	app/static/css/LandingPage.css
+-	-	app/static/images/FoodPrint_logo.png
+11	0	app/templates/LandingPage.html
+
+============================================================
+Commit: a0de56786b90b495c57e599b843e40c427847ba0
+Author: George Edward Gudgeon <geg963@outlook.com>
+Author date: 2026-04-24 23:07:56 +0100
+Committer: George Edward Gudgeon <geg963@outlook.com>
+Committer date: 2026-04-24 23:07:56 +0100
+
+Message:
+added tip to class stat-card, fixed lowercase text in css rule
+
+Changed project files:
+1	1	app/static/css/page_style.css
+31	20	app/templates/index.html
+
+============================================================
+Commit: 22291630821e674868a4347bea22ed0d76ce15f3
+Author: George Edward Gudgeon <geg963@outlook.com>
+Author date: 2026-04-24 22:28:14 +0100
+Committer: George Edward Gudgeon <geg963@outlook.com>
+Committer date: 2026-04-24 22:28:14 +0100
+
+Message:
+fixed dashboard calculation for average, current username is highlighted in leaderboard, deleted repeated CSS and competing css, amended redirect route to avoid db error and got rid of POST method as not needed, put FLash messages into base html, currently being ignored despite already existing in routes.
+
+Changed project files:
+17	9	app/routes.py
+1	1	app/static/css/auth.css
+60	83	app/static/css/page_style.css
+38	4	app/static/css/style.css
+1	2	app/templates/LeaderboardPage.html
+11	1	app/templates/base.html
+10	11	app/templates/index.html
+
+============================================================
+Commit: c119449f60ffda4d05411a3ce688295f3a33e402
+Author: George Edward Gudgeon <geg963@outlook.com>
+Author date: 2026-04-24 20:01:34 +0100
+Committer: George Edward Gudgeon <geg963@outlook.com>
+Committer date: 2026-04-24 20:01:34 +0100
+
+Message:
+minor fix to most recent meals, which was interfering with the way tips are generated. Tips now only look at users last 7 meals, as originally intended, rather than all meals from last 7 days. test_tips test has all passes.
+
+Changed project files:
+10	5	app/routes.py
+7	6	app/templates/index.html
+
+============================================================
+Commit: 5b89c7ac18044ac3dc237ffdc76287919a8979dc
+Author: George Edward Gudgeon <geg963@outlook.com>
+Author date: 2026-04-24 19:10:48 +0100
+Committer: George Edward Gudgeon <geg963@outlook.com>
+Committer date: 2026-04-24 19:10:48 +0100
+
+Message:
+changed dashboard from showing all meals in the last week, to just the last 7 most recent meals
+
+Changed project files:
+1	1	app/routes.py
+2	2	app/templates/index.html
+
+============================================================
+Commit: 7bc34f27aea196676c565f1dac299ca6d5a90c37
+Author: George Edward Gudgeon <geg963@outlook.com>
+Author date: 2026-04-24 17:58:11 +0100
+Committer: George Edward Gudgeon <geg963@outlook.com>
+Committer date: 2026-04-24 17:58:11 +0100
+
+Message:
+code cleanup
+
+Changed project files:
+1	2	app/__init__.py
+3	4	app/models.py
+0	2	app/static/css/LandingPage.css
+0	126	app/static/css/PastaPage.css
+10	3	app/static/css/auth.css
+45	11	app/static/css/page_style.css
+9	3	app/static/css/style.css
+11	10	app/templates/HomeRedirect.html
+56	56	app/templates/LandingPage.html
+14	14	app/templates/LoginPage.html
+0	96	app/templates/PastaPage.html
+46	46	app/templates/SignupPage.html
+14	14	app/templates/base.html
+15	14	app/templates/index.html
+1	1	app/templates/log_meal.html
+
+============================================================
+Commit: 42d4548d06d54df5b9bb1b3c387d2f85bc6925ce
+Author: George Edward Gudgeon <geg963@outlook.com>
+Author date: 2026-04-24 17:39:51 +0100
+Committer: George Edward Gudgeon <geg963@outlook.com>
+Committer date: 2026-04-24 17:39:51 +0100
+
+Message:
+Fixed more css and html, made corrected leaderboard and dashboard to display last 7 days of meals, not just all meals ever recorded. changed login/logout button, aadded total emissions compared to average to dashboard
+
+Changed project files:
+33	31	app/forms.py
+72	21	app/routes.py
+28	59	app/static/css/auth.css
+0	299	app/static/css/log_meal.css
+395	0	app/static/css/page_style.css
+27	90	app/static/css/style.css
+37	32	app/templates/HomeRedirect.html
+56	56	app/templates/LandingPage.html
+1	1	app/templates/LeaderboardPage.html
+2	2	app/templates/LoginPage.html
+4	4	app/templates/SignupPage.html
+19	13	app/templates/base.html
+36	22	app/templates/index.html
+7	8	app/templates/log_meal.html
+
+============================================================
+Commit: 5682b126e790fb04ed3e35ec36039e5e48b67219
+Author: George Edward Gudgeon <geg963@outlook.com>
+Author date: 2026-04-24 15:47:59 +0100
+Committer: George Edward Gudgeon <geg963@outlook.com>
+Committer date: 2026-04-24 15:47:59 +0100
+
+Message:
+Second commit:
+Reinstated landing page - only seen when a user is logged out, removed logo. If you tried to click on Log a meal when logged out, internal server error - now redirects to login. Homepage/dashboard shows total emissions for the last 7 days in the top banner.
+Changes to Your Last 7 meals: high impact foods are highlighted red, very low impact highlighted green, date added to each entry, most recent entries on the top, each entry is in a grey box. Changes to In the last week you had: ordered descending by quantity, high impact foods have text in red.Changed CO2 format to make the 2 subscript sitewide. Leaderboard: user in first place has name in bold.
+When user is not signed in, the sign out button is not visible. When user is logged in, login and sign up are not visible. Sign out moved to a dropdown when hovering over username in top right.
+
+Changed project files:
+37	25	app/routes.py
+83	14	app/static/css/LandingPage.css
+125	26	app/static/css/PastaPage.css
+102	19	app/static/css/auth.css
+288	30	app/static/css/log_meal.css
+198	41	app/static/css/style.css
+0	19	app/templates/LandingPage.html
+23	19	app/templates/LeaderboardPage.html
+0	0	app/templates/{meals => }/PastaPage.html
+24	18	app/templates/base.html
+56	15	app/templates/index.html
+2	49	app/templates/log_meal.html
+
+============================================================
+Commit: 1a4ff672238cb458048162fca8a0d445ba661d77
+Author: George Edward Gudgeon <geg963@outlook.com>
+Author date: 2026-04-24 12:06:23 +0100
+Committer: George Edward Gudgeon <geg963@outlook.com>
+Committer date: 2026-04-24 12:06:23 +0100
+
+Message:
+restructred css folder, removed redundant sub folder for PastaPage, removed duplicated css in each
+
+Changed project files:
+14	98	app/static/css/LandingPage.css
+27	0	app/static/css/PastaPage.css
+27	125	app/static/css/auth.css
+39	376	app/static/css/log_meal.css
+0	156	app/static/css/meal/PastaPage.css
+45	126	app/static/css/style.css
+1	1	app/templates/meals/PastaPage.html
+
+============================================================
+Commit: 469ef77a46a1d94c9d15f32ad3c9d8f3ba522e0b
+Author: James O'Hara <172317603+JamesOHara121@users.noreply.github.com>
+Author date: 2026-04-23 15:53:38 +0100
+Committer: James O'Hara <172317603+JamesOHara121@users.noreply.github.com>
+Committer date: 2026-04-23 15:53:38 +0100
+
+Message:
+Added tests for the personalised tips user story
+
+Changed project files:
+115	0	tests/test_tips.py
+
+============================================================
+Commit: 94a6ad072edbd9d4b3d5788b8c3e143dddbff766
+Author: virajkc1 <virajkc1@gmail.com>
+Author date: 2026-04-23 12:07:36 +0100
+Committer: virajkc1 <virajkc1@gmail.com>
+Committer date: 2026-04-23 12:10:08 +0100
+
+Message:
+test Comments Extra
+
+Z
+
+Changed project files:
+4	4	tests/test_models.py
+32	13	tests/test_routes.py
+
+============================================================
+Commit: fc178b6792d1714474382f62363da555927ec55b
+Author: James O'Hara <172317603+JamesOHara121@users.noreply.github.com>
+Author date: 2026-04-23 11:33:18 +0100
+Committer: James O'Hara <172317603+JamesOHara121@users.noreply.github.com>
+Committer date: 2026-04-23 11:33:18 +0100
+
+Message:
+Added emissions number for each meal on home page
+
+Changed project files:
+1	1	app/templates/index.html
+
+============================================================
+Commit: a53f5d4d8bd3895ac461b7e77c4ae2e75d4fb095
+Author: virajkc1 <virajkc1@gmail.com>
+Author date: 2026-04-22 16:00:29 +0100
+Committer: virajkc1 <virajkc1@gmail.com>
+Committer date: 2026-04-22 16:00:29 +0100
+
+Message:
+Tests added
+
+Changed project files:
+0	1	GroupProject
+2	0	app/routes.py
+21	0	tests/conftest.py
+41	0	tests/test_models.py
+43	0	tests/test_routes.py
+
+============================================================
+Commit: 82b70e8ecbbe972de86d30448c4f959d1176cf01
+Author: James O'Hara <172317603+JamesOHara121@users.noreply.github.com>
+Author date: 2026-04-14 14:47:39 +0100
+Committer: James O'Hara <172317603+JamesOHara121@users.noreply.github.com>
+Committer date: 2026-04-14 14:47:39 +0100
+
+Message:
+Home page + personalised tips done, needs to be made prettier though
+
+Changed project files:
+27	3	app/forms.py
+2	1	app/models.py
+11	1	app/routes.py
+7	0	app/static/css/log_meal.css
+10	10	app/static/food_emissions_portions.csv
+53	0	app/templates/index.html
+1	1	app/templates/log_meal.html
+
+============================================================
+Commit: eaa0da160d731b6cc68927d36183da4e840fd102
+Author: James O'Hara <172317603+JamesOHara121@users.noreply.github.com>
+Author date: 2026-04-13 15:34:29 +0100
+Committer: James O'Hara <172317603+JamesOHara121@users.noreply.github.com>
+Committer date: 2026-04-13 15:34:29 +0100
+
+Message:
+Users, meals and leaderboard now all function properly
+
+Changed project files:
+3	3	app/forms.py
+14	6	app/models.py
+22	6	app/routes.py
+1	1	app/templates/HomeRedirect.html
+3	3	app/templates/LeaderboardPage.html
+1	1	app/templates/SignupPage.html
+4	5	app/templates/log_meal.html
+53	21	setup.py
+
+============================================================
+Commit: 9bd7a1ffd06575e10b2aa494b565539d4bd91d26
+Author: Anthony Okeke <acokeke14@gmail.com>
+Author date: 2026-03-19 11:21:40 +0000
+Committer: Anthony Okeke <acokeke14@gmail.com>
+Committer date: 2026-03-19 11:21:40 +0000
+
+Message:
+Added login functionality and added email-validator to requirements.txt
+
+Changed project files:
+4	1	app/__init__.py
+36	2	app/forms.py
+6	3	app/models.py
+50	4	app/routes.py
+16	15	app/templates/LoginPage.html
+34	18	app/templates/SignupPage.html
+1	0	app/templates/base.html
+-	-	requirements.txt
+
+============================================================
+Commit: 72116b984b0c0ab7b97f5c3c0275cb7c9ffc724e
+Author: virajkc1 <virajkc1@gmail.com>
+Author date: 2026-03-18 15:16:12 +0000
+Committer: virajkc1 <virajkc1@gmail.com>
+Committer date: 2026-03-18 15:16:12 +0000
+
+Message:
+Leaderboard Built
+
+Changed project files:
+27	4	app/models.py
+6	2	app/routes.py
+34	0	app/static/css/log_meal.css
+28	3	app/templates/LeaderboardPage.html
+-	-	requirements.txt
+27	0	setup.py
+
+============================================================
+Commit: 6b22344140accb1285c8fa1ce29a8d82beb48aeb
+Author: George Edward Gudgeon <geg963@outlook.com>
+Author date: 2026-03-16 23:23:11 +0000
+Committer: George Edward Gudgeon <geg963@outlook.com>
+Committer date: 2026-03-16 23:23:11 +0000
+
+Message:
+testing push
+
+Changed project files:
+2	0	app/forms.py
+2	1	app/models.py
+1	0	app/static/css/auth.css
+
+============================================================
+Commit: 42daa89a501b9789716cebde23bac545ea097eb1
+Author: virajkc1 <virajkc1@gmail.com>
+Author date: 2026-03-12 16:51:56 +0000
+Committer: virajkc1 <virajkc1@gmail.com>
+Committer date: 2026-03-12 16:51:56 +0000
+
+Message:
+Home
+
+Changed project files:
+1	0	GroupProject
+1	1	app/__init__.py
+1	1	app/templates/base.html
+
+============================================================
+Commit: 49217ed95cb6570b952d19b322563a6cfce6f3c7
+Author: James O'Hara <172317603+JamesOHara121@users.noreply.github.com>
+Author date: 2026-02-27 15:03:23 +0000
+Committer: James O'Hara <172317603+JamesOHara121@users.noreply.github.com>
+Committer date: 2026-02-27 15:03:23 +0000
+
+Message:
+added database, redirect page now works properly
+
+Changed project files:
+3	16	app/forms.py
+41	21	app/models.py
+19	59	app/routes.py
+46	46	app/{Data => static}/food_emissions_portions.csv
+2	2	app/templates/HomeRedirect.html
+
+============================================================
+Commit: 0754d314a218767a33b89407c0588003c26ec958
+Author: ed <elewis8@icloud.com>
+Author date: 2026-02-24 13:59:40 +0000
+Committer: ed <elewis8@icloud.com>
+Committer date: 2026-02-24 13:59:40 +0000
+
+Message:
+added route and stared csv import logic
+
+Changed project files:
+46	0	app/Data/food_emissions_portions.csv
+7	1	app/forms.py
+49	0	app/routes.py
+
+============================================================
+Commit: 318558cd95e20819b5516e349a2d07759d97254a
+Author: gudgeoff <geg963@outlook.com>
+Author date: 2026-02-24 12:16:25 +0000
+Committer: gudgeoff <geg963@outlook.com>
+Committer date: 2026-02-24 12:16:25 +0000
+
+Message:
+delete edd test class
+
+Changed project files:
+0	4	app/forms.py
+
+============================================================
+Commit: 713bf14a0bd4ea2c18b3833ac5d157b4ac18b089
+Author: ed <elewis8@icloud.com>
+Author date: 2026-02-24 12:07:54 +0000
+Committer: ed <elewis8@icloud.com>
+Committer date: 2026-02-24 12:07:54 +0000
+
+Message:
+test
+
+Changed project files:
+5	1	app/forms.py
+
+============================================================
+Commit: 3425e99cc4c082e696b6e253a18951657639841d
+Author: gudgeoff <geg963@outlook.com>
+Author date: 2026-02-24 09:14:00 +0000
+Committer: gudgeoff <geg963@outlook.com>
+Committer date: 2026-02-24 09:14:00 +0000
+
+Message:
+moved classes located in classes.py file to models.py file because they are models
+
+Changed project files:
+0	33	app/classes.py
+33	0	app/models.py
+1	1	app/routes.py
+43	42	app/templates/LandingPage.html
+
+============================================================
+Commit: 2fb64bf63ed8d86b8f0dbf5414445daab2eacc3c
+Author: gudgeoff <geg963@outlook.com>
+Author date: 2026-02-23 20:17:54 +0000
+Committer: gudgeoff <geg963@outlook.com>
+Committer date: 2026-02-23 20:17:54 +0000
+
+Message:
+temporary vector logo added to landing page
+
+Changed project files:
+11	0	app/static/css/LandingPage.css
+50	1	app/templates/LandingPage.html
+
+============================================================
+Commit: 984e80b288107cc1573c89e56515d3f045ddb202
+Author: gudgeoff <geg963@outlook.com>
+Author date: 2026-02-23 20:10:17 +0000
+Committer: gudgeoff <geg963@outlook.com>
+Committer date: 2026-02-23 20:10:17 +0000
+
+Message:
+css tidyup
+
+Changed project files:
+2	97	app/static/css/LandingPage.css
+0	106	app/static/css/LoginPage.css
+1	1	app/static/css/{SignupPage.css => auth.css}
+106	63	app/static/css/style.css
+1	1	app/templates/LoginPage.html
+1	1	app/templates/SignupPage.html
+
+============================================================
+Commit: 6d4dbd6df11c2df3b576d9c9fae78b2458ee0820
+Author: gudgeoff <geg963@outlook.com>
+Author date: 2026-02-23 18:04:59 +0000
+Committer: gudgeoff <geg963@outlook.com>
+Committer date: 2026-02-23 18:04:59 +0000
+
+Message:
+empty leaderboardpage but linked by href links in nav bar
+
+Changed project files:
+6	1	app/routes.py
+5	3	app/templates/LeaderboardPage.html
+1	2	app/templates/base.html
+
+============================================================
+Commit: 44b23adeccaa971849655e98589f9f82b1fa5b5a
+Author: gudgeoff <geg963@outlook.com>
+Author date: 2026-02-23 17:55:50 +0000
+Committer: gudgeoff <geg963@outlook.com>
+Committer date: 2026-02-23 17:55:50 +0000
+
+Message:
+rename css file to match html file
+
+Changed project files:
+0	0	app/static/css/{HomePage.css => log_meal.css}
+1	1	app/templates/log_meal.html
+
+============================================================
+Commit: b54822ddf78f11bc09c458bf0e030c91c28b2d06
+Author: gudgeoff <geg963@outlook.com>
+Author date: 2026-02-23 17:23:30 +0000
+Committer: gudgeoff <geg963@outlook.com>
+Committer date: 2026-02-23 17:23:30 +0000
+
+Message:
+reset leaderboard page to extend base
+
+Changed project files:
+9	10	app/templates/LeaderboardPage.html
+
+============================================================
+Commit: 961b636e97fba9956d213acc4ce28510125e6608
+Author: George Edward Gudgeon <geg@libra>
+Author date: 2026-02-23 17:16:04 +0000
+Committer: George Edward Gudgeon <geg@libra>
+Committer date: 2026-02-23 17:16:04 +0000
+
+Message:
+slight changes to log_food form, made default None/please select
+
+Changed project files:
+6	6	app/forms.py
+1	1	app/templates/log_meal.html
+
+============================================================
+Commit: 3eefc17b49136cc4aa12e68c9f763db2c2ddfffe
+Author: George Edward Gudgeon <geg@libra>
+Author date: 2026-02-23 17:05:21 +0000
+Committer: George Edward Gudgeon <geg@libra>
+Committer date: 2026-02-23 17:05:21 +0000
+
+Message:
+removed navigation bar from landing page and added one to base.html
+
+Changed project files:
+1	1	app/forms.py
+3	3	app/routes.py
+81	0	app/static/css/style.css
+18	18	app/templates/LandingPage.html
+23	3	app/templates/base.html
+0	0	app/templates/{HomePage.html => log_meal.html}
+
+============================================================
+Commit: b469c491b1ec48ca675ab2e1da58072b075ba2c7
+Author: James O'Hara <172317603+JamesOHara121@users.noreply.github.com>
+Author date: 2026-02-23 16:44:26 +0000
+Committer: James O'Hara <172317603+JamesOHara121@users.noreply.github.com>
+Committer date: 2026-02-23 16:44:26 +0000
+
+Message:
+Merge branch 'main' of https://github.com/UOB-BUS-2/GroupProject
+
+Changed project files:
+============================================================
+Commit: bbdb94c976bd84e71386d69d285720cfb124e4a8
+Author: James O'Hara <172317603+JamesOHara121@users.noreply.github.com>
+Author date: 2026-02-23 16:36:36 +0000
+Committer: James O'Hara <172317603+JamesOHara121@users.noreply.github.com>
+Committer date: 2026-02-23 16:36:36 +0000
+
+Message:
+added to Meal class
+
+Changed project files:
+29	5	app/classes.py
+2	3	app/routes.py
+
+============================================================
+Commit: 0c9070eed00028430aefee9f5abe95a5db2dfc4c
+Author: George Edward Gudgeon <geg@libra>
+Author date: 2026-02-23 16:25:13 +0000
+Committer: George Edward Gudgeon <geg@libra>
+Committer date: 2026-02-23 16:25:13 +0000
+
+Message:
+Typo
+
+Changed project files:
+1	1	app/forms.py
+
+============================================================
+Commit: ea2be273755136a83a23d6a7422e7d8a8ef79b63
+Author: George Edward Gudgeon <geg@libra>
+Author date: 2026-02-23 15:49:17 +0000
+Committer: George Edward Gudgeon <geg@libra>
+Committer date: 2026-02-23 15:49:17 +0000
+
+Message:
+changed css, added form to home page for adding a meal with dummy demo options, that tie in with James
+
+Changed project files:
+1	1	app/__init__.py
+4	0	app/classes.py
+28	0	app/forms.py
+11	4	app/routes.py
+146	0	app/static/css/HomePage.css
+24	0	app/static/css/style.css
+83	66	app/templates/HomePage.html
+34	18	app/templates/HomeRedirect.html
+1	0	app/templates/base.html
+
+============================================================
+Commit: d22d141e46e70392df090f1ab356f028286b5ffb
+Author: James O'Hara <172317603+JamesOHara121@users.noreply.github.com>
+Author date: 2026-02-23 14:40:14 +0000
+Committer: James O'Hara <172317603+JamesOHara121@users.noreply.github.com>
+Committer date: 2026-02-23 14:40:14 +0000
+
+Message:
+Added generic tips, classes.py and started home_redirect page
+
+Changed project files:
+5	0	app/classes.py
+27	2	app/routes.py
+30	0	app/static/generic_tips.txt
+-	-	app/static/images/high.png
+-	-	app/static/images/low.png
+-	-	app/static/images/medium.png
+-	-	app/static/images/very_high.png
+-	-	app/static/images/very_low.png
+26	0	app/templates/HomeRedirect.html
+
+============================================================
+Commit: 148634f0e81d87659573793a0113a36d5e3390a3
+Author: George Edward Gudgeon <geg@libra>
+Author date: 2026-02-23 14:09:52 +0000
+Committer: George Edward Gudgeon <geg@libra>
+Committer date: 2026-02-23 14:09:52 +0000
+
+Message:
+Type
+
+Changed project files:
+1	1	app/templates/HomePage.html
+
+============================================================
+Commit: 9c89afed0ee6c0cd4936c85ece496dee2cbd220f
+Author: virajkc1 <virajkc1@gmail.com>
+Author date: 2026-02-19 15:24:31 +0000
+Committer: virajkc1 <virajkc1@gmail.com>
+Committer date: 2026-02-19 15:24:31 +0000
+
+Message:
+Changed FoodApp to Food
+
+Changed project files:
+1	1	app/templates/LandingPage.html
+
+============================================================
+Commit: a79c6715c9eb4037a1138c99a0c6502294dc596a
+Author: virajkc1 <virajkc1@gmail.com>
+Author date: 2026-02-15 02:51:37 +0000
+Committer: virajkc1 <virajkc1@gmail.com>
+Committer date: 2026-02-15 02:51:37 +0000
+
+Message:
+html and css templates added
+
+Changed project files:
+5	0	README.md
+4	4	app/__init__.py
+12	1	app/routes.py
+191	0	app/static/css/HomePage.css
+188	0	app/static/css/LandingPage.css
+106	0	app/static/css/LoginPage.css
+126	0	app/static/css/SignupPage.css
+156	0	app/static/css/meal/PastaPage.css
+83	10	app/templates/HomePage.html
+63	10	app/templates/LandingPage.html
+36	10	app/templates/LoginPage.html
+43	10	app/templates/SignupPage.html
+7	16	app/templates/base.html
+96	0	app/templates/meals/PastaPage.html
+4	1	config.py
+
+============================================================
+Commit: f1e6fd7066b24ad7126d3aa8790d4db9eb89f3bd
+Author: virajkc1 <virajkc1@gmail.com>
+Author date: 2026-02-15 01:10:02 +0000
+Committer: virajkc1 <virajkc1@gmail.com>
+Committer date: 2026-02-15 01:10:02 +0000
+
+Message:
+ReadMe file created
+
+Changed project files:
+1	0	.gitignore
+44	0	README.md
+4	1	app/__init__.py
+8	0	app/routes.py
+25	0	app/templates/base.html
+-	-	requirements.txt
+
+============================================================
+Commit: 4b4d972bea01fa775fda5cf76abb5ef80e246449
+Author: virajkc1 <virajkc1@gmail.com>
+Author date: 2026-02-14 19:09:35 +0000
+Committer: virajkc1 <virajkc1@gmail.com>
+Committer date: 2026-02-14 19:09:35 +0000
+
+Message:
+HTML Structure Added
+
+Changed project files:
+0	0	.gitignore
+7	0	app/__init__.py
+5	0	config.py
+
+============================================================
+Commit: b71540fd00557c4cbad3f725deb13c9873187795
+Author: virajkc1 <virajkc1@gmail.com>
+Author date: 2026-02-14 19:06:31 +0000
+Committer: virajkc1 <virajkc1@gmail.com>
+Committer date: 2026-02-14 19:06:31 +0000
+
+Message:
+Skeleton Structure Added
+
+Changed project files:
+0	0	main/main.py => app/__init__.py
+0	0	app/forms.py
+0	0	app/models.py
+0	0	app/routes.py
+10	0	app/templates/HomePage.html
+10	0	app/templates/LandingPage.html
+10	0	app/templates/LeaderboardPage.html
+10	0	app/templates/LoginPage.html
+10	0	app/templates/SignupPage.html
+0	0	config.py
+
+============================================================
+Commit: f3bf266bc4d39f66b87823ae844575429fd2d1c6
+Author: virajkc1 <virajkc1@gmail.com>
+Author date: 2026-02-02 15:13:45 +0000
+Committer: virajkc1 <virajkc1@gmail.com>
+Committer date: 2026-02-02 15:13:45 +0000
+
+Message:
+redacted pdf files - FYI when available i will upload to OneDrive
+
+Changed project files:
+-	-	BUS2 Meeting Minutes PDF.pdf
+-	-	BUS2 Meeting Minutes.docx
+
+============================================================
+Commit: ef61e61ab095abd7aa1c1cc886a24dce293e6974
+Author: steelflint <elewis8@icloud.com>
+Author date: 2026-02-02 13:41:50 +0000
+Committer: GitHub <noreply@github.com>
+Committer date: 2026-02-02 13:41:50 +0000
+
+Message:
+Add files via upload
+Changed project files:
+-	-	BUS2 Meeting Minutes PDF.pdf
+-	-	BUS2 Meeting Minutes.docx
+
+============================================================
+Commit: 05becf49889cab1adc3222a87505585503134a16
+Author: virajkc1 <virajkc1@gmail.com>
+Author date: 2026-02-02 13:27:09 +0000
+Committer: virajkc1 <virajkc1@gmail.com>
+Committer date: 2026-02-02 13:27:09 +0000
+
+Message:
+Flask
+
+Changed project files:
+0	0	main/main.py
