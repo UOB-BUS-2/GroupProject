@@ -1,5 +1,115 @@
 .auth-layout {
     min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;   /* 👈 pushes content to top */
+    padding: 30px 24px 40px;  /* 👈 controls distance from top */
+}
+
+.auth-left {
+    display: none;
+}
+
+.auth-right {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-card {
+    width: min(440px, 100%);
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 50px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.auth-title {
+    margin: 0 0 10px 0;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.auth-subtitle {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.auth-card p {
+    margin: 0 0 24px 0;
+}
+
+.auth-card label {
+    display: block;
+    font-size: 16px;
+    color: var(--text-main);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.auth-card input:not([type="submit"]):not([type="checkbox"]) {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 0 16px;
+    font-size: 16px;
+    background: #ffffff;
+    outline: none;
+    font-family: inherit;
+}
+
+.auth-card input:focus {
+    border-color: var(--blue-primary);
+    box-shadow: 0 0 0 3px rgba(11, 61, 255, 0.12);
+}
+
+.auth-card input[type="submit"] {
+    width: 100%;
+    height: 52px;
+    border-radius: 12px;
+
+    background: #bbf7d0;        /* pastel green */
+    color: #14532d;             /* dark green text */
+
+    border: 1px solid #86efac;  /* subtle border */
+
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    border: none;
+
+    transition: all 0.2s ease;
+
+}
+
+.auth-card input[type="submit"]:hover {
+    background: #86efac;        /* slightly darker pastel */
+    color: #064e3b;             /* deeper green text */
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(22, 163, 74, 0.2);
+}
+
+
+@media (max-width: 900px) {
+    .auth-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-left {
+        display: none;
+    }
+}
+
+
+
+
+/* .auth-layout {
+    min-height: 100vh;
     display: grid;
     grid-template-columns: 1.1fr 1fr;
 }
@@ -85,4 +195,4 @@
     .auth-left {
         display: none;
     }
-}
+}*/
