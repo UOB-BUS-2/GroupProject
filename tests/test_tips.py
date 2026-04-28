@@ -5,7 +5,7 @@ from flask_login import login_user
 
 def setup_only_allowed_users():
     # Mark app as testing mode.
-    app.config["TESTING"] = True #this enables testing mode in Flask for us -
+    app.config["TESTING"] = True  # this enables testing mode in Flask for us -
 
     # Bypass @login_required on /leaderboard so can test the leaderboard solely
     app.config["LOGIN_DISABLED"] = False
@@ -37,7 +37,6 @@ def _test_template(protein, response_message):
 
     with app.test_request_context():
         with client:
-
             # login user
             test_user = User.query.first()
             login_user(test_user)

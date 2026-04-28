@@ -5,7 +5,7 @@ from flask_login import login_user
 
 def setup_only_allowed_users():
     # Mark app as testing mode.
-    app.config["TESTING"] = True #this enables testing mode in Flask for us -
+    app.config["TESTING"] = True  # this enables testing mode in Flask for us -
 
     # Bypass @login_required on /leaderboard so can test the leaderboard solely
     app.config["LOGIN_DISABLED"] = False
@@ -57,7 +57,6 @@ def setup_test(protein, carb, veg):
 
 class TestCalculator:
     def test_highest_emission(self):
-
         # TESTING THE HIGHEST EMISSION MEAL POSSIBLE (beef, rice, tomato)
         response = setup_test("beef", "rice", "tomato")
         # test qualitative impact is correct
@@ -80,4 +79,3 @@ class TestCalculator:
         assert "0.154" in response
         # test equivalent miles is calculated correctly
         assert "0.4" in response
-

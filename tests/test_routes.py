@@ -8,14 +8,13 @@ Run tests with
 
 """
 
-
 from app import app, db
 from app.models import User, Meal
 
 
 def setup_only_allowed_users():
     # Mark app as testing mode.
-    app.config["TESTING"] = True #this enables testing mode in Flask for us -
+    app.config["TESTING"] = True  # this enables testing mode in Flask for us -
 
     # Bypass @login_required on /leaderboard so can test the leaderboard solely
     app.config["LOGIN_DISABLED"] = True
@@ -60,21 +59,26 @@ james = 10
 viraj = 10
 
 """
+
+
 def test_leaderboard():
     # Arrange: DB contains only viraj/james/george. - NOTE it uses our actual database
-    setup_only_allowed_users() ##creates and adds the users in database with these scores
+    setup_only_allowed_users()  ##creates and adds the users in database with these scores
 
     # request the leaderboard page.
-    client = app.test_client() #IMPORTANT - this line essentially creates  a test client - simulates HTTP reqs w/o an actual server
-    resp = client.get("/leaderboard", follow_redirects=False) #obtain the response after client runs /leaderboard no redirects are allowed so solely tests leaderboard
-    assert resp.status_code == 200 #200 status correct means a success - assert checks correct status code
+    client = app.test_client()  # IMPORTANT - this line essentially creates  a test client - simulates HTTP reqs w/o an actual server
+    resp = client.get("/leaderboard",
+                      follow_redirects=False)  # obtain the response after client runs /leaderboard no redirects are allowed so solely tests leaderboard
+    assert resp.status_code == 200  # 200 status correct means a success - assert checks correct status code
 
     # Assert: page renders and ordering is lowest emissions first.
-    body = resp.get_data(as_text=True) # get_data just converts response into a string
-    assert "Leaderboard" in body #checks code renders
-    #THESE ARE THE TESTS RUNNING
-    assert body.index("george") < body.index("james") # .index is the position  so just checking in the html george is before  james
+    body = resp.get_data(as_text=True)  # get_data just converts response into a string
+    assert "Leaderboard" in body  # checks code renders
+    # THESE ARE THE TESTS RUNNING
+    assert body.index("george") < body.index(
+        "james")  # .index is the position  so just checking in the html george is before  james
     assert body.index("george") < body.index("viraj")
+
 
 # check that the pages don't crash
 def test_about_page_loads():

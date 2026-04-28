@@ -8,7 +8,7 @@ def _setup_only_allowed_users():
 
     # Build a clean schema so there are no leftover users from app.db.
     with app.app_context():
-        db.drop_all() #basically a test database clearing the table and creating a new one per run
+        db.drop_all()  # basically a test database clearing the table and creating a new one per run
         db.create_all()
 
         # Only allowed test users to test the leadrboard
@@ -39,6 +39,7 @@ def test_get_leaderboard_orders():
 
         # Sort rule: tuples are sorted by score first, then username for ties.
         assert leaderboard == [(5, "george"), (10, "james"), (10, "viraj")]
+
 
 # testing password hashing
 def test_password_hashing():
