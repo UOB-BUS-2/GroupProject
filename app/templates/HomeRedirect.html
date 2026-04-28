@@ -10,7 +10,20 @@
 <main class="analysis-page">
     <div class="analysis-container">
         <header class="impact-header">
-            <h1>Your meal's impact is: <strong>{{ qualitative_impact | replace('_', ' ') | title }}</strong></h1>
+            <h1>
+                Your meal's impact is:
+                <strong class="
+        {% if qualitative_impact in ['very_low', 'low'] %}
+            impact-low
+        {% elif qualitative_impact == 'medium' %}
+            impact-medium
+        {% elif qualitative_impact in ['high', 'very_high'] %}
+            impact-high
+        {% endif %}
+    ">
+                    {{ qualitative_impact | replace('_', ' ') | title }}
+                </strong>
+            </h1>
         </header>
 
         <div class="gauge-wrapper">

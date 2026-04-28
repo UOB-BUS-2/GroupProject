@@ -10,7 +10,7 @@ Run tests with
 
 
 from app import app, db
-from app.models import User
+from app.models import User, Meal
 
 
 def setup_only_allowed_users():
@@ -35,7 +35,22 @@ def setup_only_allowed_users():
         u3.set_password("hello")
 
         db.session.add_all([u1, u2, u3])
+        db.session.flush()
+        # Updated: log meals so leaderboard has data to calculate
+        # george with lowst emission meal, james and viraj both with high emission meals
+        m_george = Meal(protein="beans", carb="pasta", veg="tomato", user_id=u3.id)
+        m_george.calculate_emissions()  # gives george lowest score of the three
+
+        # James & Viraj - high emission meals
+        m_james = Meal(protein="beef", carb="pasta", veg="tomato", user_id=u2.id)
+        m_james.calculate_emissions()  # Sets high score
+
+        m_viraj = Meal(protein="beef", carb="pasta", veg="tomato", user_id=u1.id)
+        m_viraj.calculate_emissions()
+
+        db.session.add_all([m_george, m_james, m_viraj])
         db.session.commit()
+
 
 """
 Tests order of leaderboard is
@@ -60,3 +75,10 @@ def test_leaderboard():
     #THESE ARE THE TESTS RUNNING
     assert body.index("george") < body.index("james") # .index is the position  so just checking in the html george is before  james
     assert body.index("george") < body.index("viraj")
+
+# check that the pages don't crash
+def test_about_page_loads():
+    client = app.test_client()
+    response = client.get("/about")
+    assert response.status_code == 200
+    assert b"About" in response.data

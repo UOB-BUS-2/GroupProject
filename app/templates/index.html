@@ -18,18 +18,18 @@
     <section class="stats">
         <div class="stat-card stat-card--full">
             <div class="dash-subtitle">
-                The Carbon Footprint for your <strong>{{ num_meals }}</strong> logged meals is: <strong>{{
+                The total carbon footprint for your <strong>{{ num_meals }}</strong> logged meals is: <strong>{{
                 weekly_total|round(2) }} kg
                 CO<sub>2</sub>e</strong>.
             </div>
 
             <div class="comparison-display">
-                <span class="comparison-label">Your per-meal footprint is</span>
+                <span class="comparison-label">Your average meal footprint is</span>
                 <span class="comparison-value">{{ comparison_delta }}%</span>
                 <span class="comparison-label {% if comparison_label == 'higher' %}text-red{% else %}text-green{% endif %}">
         {{ comparison_label }}
     </span>
-                <span class="comparison-label">than average.</span>
+                <span class="comparison-label">than the global average.</span>
             </div>
 
         </div>
@@ -103,7 +103,7 @@
                 {% elif "shrimp" in tip_proteins %}
                 <p>Try swapping out shrimp for wild fish!</p>
                 {% elif "pork" in tip_proteins %}
-                <p>Try swapping our pork for tofu!</p>
+                <p>Try swapping out pork for tofu!</p>
                 {% else %}
                 <p>You have a very low environmental impact, keep doing what you're doing!</p>
                 {% endif %}

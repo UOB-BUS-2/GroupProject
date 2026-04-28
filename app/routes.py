@@ -5,7 +5,7 @@ import random
 from datetime import datetime, timedelta
 
 from app import app, db
-from flask import render_template, current_app, redirect, url_for, flash, request
+from flask import render_template, current_app, redirect, url_for, flash, request, abort
 from app.models import User, Meal
 from app.forms import LogMeal, LoginForm, RegistrationForm
 
@@ -186,7 +186,7 @@ def home_redirect(meal_id):
     # get meal more safely or return 404 error if doesn't exist
     logged_meal = db.session.get(Meal, meal_id)
     if logged_meal is None:
-        os.abort(404)
+        abort(404)
     total_emissions = logged_meal.total_emissions
     qualitative_impact = logged_meal.get_qualitative_impact()
     car_miles = logged_meal.calculate_equivalent_miles()

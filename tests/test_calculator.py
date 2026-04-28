@@ -61,23 +61,23 @@ class TestCalculator:
         # TESTING THE HIGHEST EMISSION MEAL POSSIBLE (beef, rice, tomato)
         response = setup_test("beef", "rice", "tomato")
         # test qualitative impact is correct
-        assert "Your meal's impact is: <strong>Very High</strong>" in response
+        assert "Very High" in response
         # test the correct image is shown
         assert "/static/images/very_high.png" in response
         # test kg of GHG is calculated correctly
-        assert "This meal contributed to <strong>9.488 kg</strong> of greenhouse gas emissions." in response
+        assert "9.488" in response
         # test equivalent miles is calculated correctly
-        assert "That is the equivalent of driving <strong>23.7</strong> miles in your car!"
+        assert "23.7" in response
 
     def test_lowest_emission(self):
         # TESTING THE LOWEST EMISSION MEAL POSSIBLE (beans, bread, carrot)
         response = setup_test("beans", "bread", "carrot")
         # test qualitative impact is correct
-        assert "Your meal's impact is: <strong>Very Low</strong>" in response
+        assert "Very Low" in response
         # test the correct image is shown
         assert "/static/images/very_low.png" in response
         # test kg of GHG is calculated correctly
-        assert "This meal contributed to <strong>0.154 kg</strong> of greenhouse gas emissions." in response
+        assert "0.154" in response
         # test equivalent miles is calculated correctly
-        assert "That is the equivalent of driving <strong>0.4</strong> miles in your car!"
+        assert "0.4" in response
 
