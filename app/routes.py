@@ -29,6 +29,10 @@ def index():
 
         # tip will only look at the last 7 meals
         tip_subset = sorted_weekly_meals[:7]
+        # we've decided to also cap the recent meals display at 7 last meals
+        # will still keep 'tip_subset' and 'sorted_weekly_meals' as separate lists
+        # so it's easy to change in future without affecting the other, but as of right now they are essentially the same
+        sorted_weekly_meals = sorted_weekly_meals[:7]
         tip_proteins = [m.protein.lower() for m in tip_subset]
         protein_count = {}
         weekly_total = 0
